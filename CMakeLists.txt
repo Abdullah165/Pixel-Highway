@@ -27,7 +27,12 @@ if (NOT raylib_FOUND)
 endif()
 
 # Our Project
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp
+        src/CarController.cpp
+        include/CarController.h)
+
+# Copy the assets directory to the build output directory
+file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
 
 # Link our project against Raylib
 target_link_libraries(${PROJECT_NAME} raylib)
