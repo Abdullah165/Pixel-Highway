@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "../include/CarController.h"
+#include "../include/Road.h"
 
 int main()
 {
@@ -10,6 +11,7 @@ int main()
 
     CarController car_controller;
 
+    Road road;
 
     while (!WindowShouldClose())
     {
@@ -23,6 +25,8 @@ int main()
         BeginDrawing();
 
         ClearBackground(BLACK);
+
+        road.Draw();
 
         car_controller.Draw();
 
