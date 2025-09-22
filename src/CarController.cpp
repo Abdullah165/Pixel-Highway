@@ -11,7 +11,7 @@ CarController::CarController()
     texture[2] = LoadTexture("assets/textures/car/car_24px_8way_white_8.png");
 
     position = Vector2{GetScreenWidth() / 2.2f, GetScreenHeight() - 100.0f};
-    speed = 5.0f;
+    speed = 3.0f;
 }
 
 CarController::~CarController()
@@ -36,17 +36,18 @@ void CarController::Draw() const
     {
         DrawTexture(texture[1], position.x, position.y,WHITE);
     }
-
 }
 
 void CarController::Update()
 {
     if (IsKeyDown(KEY_D))
     {
-        position.x += speed;
+        if (position.x < static_cast<float>(GetScreenWidth()) * 0.54f)
+            position.x += speed;
     }
     else if (IsKeyDown(KEY_A))
     {
-        position.x -= speed;
+        if (position.x > static_cast<float>(GetScreenWidth()) * 0.42f)
+            position.x -= speed;
     }
 }
