@@ -1,7 +1,3 @@
-//
-// Created by Lenovo on 9/20/2025.
-//
-
 #ifndef PIXEL_HIGHWAY_CARCONTROLLER_H
 #define PIXEL_HIGHWAY_CARCONTROLLER_H
 #include <array>
@@ -16,13 +12,12 @@ public:
     ~CarController();
 
     void Draw() const;
-    void Update();
+    void Update(Vector2 roadPosition, int roadWidth);
 
 private:
-    std::array<Texture2D,3> texture;
-    Vector2 position;
-
-    float speed;
+    std::array<Texture2D,3> m_texture;
+    Vector2 m_position;
+    float m_speed;
 };
 
 

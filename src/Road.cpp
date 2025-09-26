@@ -8,26 +8,36 @@
 
 Road::Road()
 {
-    for (int i = 0; i < texture.size(); i++)
+    for (int i = 0; i < m_texture.size(); i++)
     {
-        texture[i] = LoadTexture("assets/textures/road/road_64px_a_3.png");
+        m_texture[i] = LoadTexture("assets/textures/road/road_64px_a_3.png");
     }
-    position = Vector2(GetScreenWidth() / 2.5f, 0);
+    m_position = Vector2(GetScreenWidth() / 2.5f, 0);
 }
 
 Road::~Road()
 {
-    for (int i = 0; i < texture.size(); i++)
+    for (int i = 0; i < m_texture.size(); i++)
     {
-        UnloadTexture(texture[i]);
+        UnloadTexture(m_texture[i]);
     }
 }
 
 void Road::Draw() const
 {
-    DrawTexture(texture[0], position.x, position.y,WHITE);
-    for (int i = 1; i < texture.size(); i++)
+    DrawTexture(m_texture[0], m_position.x, m_position.y,WHITE);
+    for (int i = 1; i < m_texture.size(); i++)
     {
-        DrawTexture(texture[i], position.x, texture[i].height * i,WHITE);
+        DrawTexture(m_texture[i], m_position.x, m_texture[i].height * i,WHITE);
     }
+}
+
+Vector2 Road::GetPosition() const
+{
+    return m_position;
+}
+
+int Road::GetWidth() const
+{
+    return m_texture[0].width;
 }

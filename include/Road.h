@@ -1,7 +1,3 @@
-//
-// Created by Lenovo on 9/21/2025.
-//
-
 #ifndef PIXEL_HIGHWAY_ROAD_H
 #define PIXEL_HIGHWAY_ROAD_H
 #include <array>
@@ -16,9 +12,12 @@ public:
     ~Road();
     void Draw() const;
 
+    Vector2 GetPosition() const;
+    int GetWidth() const;
+
 private:
-    std::array<Texture2D,3> texture;
-    Vector2 position;
+    std::array<Texture2D,3> m_texture;
+    Vector2 m_position;
 };
 
 
