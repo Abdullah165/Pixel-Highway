@@ -17,24 +17,32 @@ int main()
     Road road;
 
     std::vector<NpcCarController> npc_cars;
-    npc_cars.reserve(4);
+    npc_cars.reserve(6);
 
-    Texture2D blue_car = LoadTexture("assets/textures/car/car_24px_blue_2.png");
-    Texture2D green_car = LoadTexture("assets/textures/car/car_24px_green_4.png");
-    Texture2D yellow_car = LoadTexture("assets/textures/car/car_24px_yellow_2.png");
+    Texture2D blue_car = LoadTexture("assets/textures/car/blue_car.png");
+    Texture2D green_car = LoadTexture("assets/textures/car/green_car.png");
+    Texture2D yellow_car = LoadTexture("assets/textures/car/yellow_car.png");
+    Texture2D pink_car = LoadTexture("assets/textures/car/pink_car.png");
+    Texture2D grey_car = LoadTexture("assets/textures/car/grey_car.png");
+    Texture2D wreck_car = LoadTexture("assets/textures/car/wreck_car.png");
 
-    npc_cars.emplace_back(blue_car,Vector2{GetScreenWidth() / 1.9f, -50.0f},4.0);
-    npc_cars.emplace_back(green_car,Vector2{GetScreenWidth() / 2.0f, -50.0f},4.0);
-    npc_cars.emplace_back(yellow_car,Vector2{GetScreenWidth() / 2.4f, -50.0f},4.0);
+    npc_cars.emplace_back(blue_car,Vector2{GetScreenWidth() / 1.85f, -50.0f},5.0);
+    npc_cars.emplace_back(green_car,Vector2{GetScreenWidth() / 2.0f, -130.0f},5.0);
+    npc_cars.emplace_back(yellow_car,Vector2{GetScreenWidth() / 2.4f, -250.0f},5.0);
+    npc_cars.emplace_back(pink_car,Vector2{GetScreenWidth() / 2.25f, -400.0f},5.0);
+    npc_cars.emplace_back(grey_car,Vector2{GetScreenWidth() / 2.25f, -500.0f},5.0);
+    npc_cars.emplace_back(wreck_car,Vector2{GetScreenWidth() / 2.25f, -600.0f},5.0);
+
+
 
     while (!WindowShouldClose())
     {
         // Update
         //----------------------------------------------------------------------------------
         car_controller.Update(road.GetPosition(), road.GetWidth());
-        for (auto& npc_car_array : npc_cars)
+        for (auto& npc_car : npc_cars)
         {
-            npc_car_array.Update(road.GetPosition(), road.GetWidth());
+            npc_car.Update(road.GetPosition(), road.GetWidth());
         }
         //----------------------------------------------------------------------------------
 
@@ -48,9 +56,9 @@ int main()
 
         car_controller.Draw();
 
-        for (const auto& npc_car_array : npc_cars)
+        for (const auto& npc_car : npc_cars)
         {
-            npc_car_array.Draw();
+            npc_car.Draw();
         }
 
         EndDrawing();

@@ -1,7 +1,3 @@
-//
-// Created by Lenovo on 9/26/2025.
-//
-
 #include "../include/NpcCarController.h"
 
 #include <iostream>
@@ -33,7 +29,7 @@ void NpcCarController::Update(Vector2 roadPosition, int roadWidth)
     if (m_position.y > GetScreenHeight() + 10.0)
     {
         RePosition(roadPosition, roadWidth);
-        ChangeSpeedRandomly(5, 6);
+        //ChangeSpeedRandomly(5, 6);
     }
 }
 
