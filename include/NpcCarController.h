@@ -10,7 +10,6 @@ public:
     NpcCarController(Texture2D car, Vector2 position, float speed);
     ~NpcCarController();
 
-    void SpawnNpcCar(Vector2 spawnPosition, int roadWidth);
     void Draw() const;
     void Update(Vector2 roadPosition, int roadWidth);
     void RePosition(Vector2 roadPosition, int roadWidth);
