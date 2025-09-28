@@ -1,7 +1,3 @@
-//
-// Created by Lenovo on 9/20/2025.
-//
-
 #include "../include/CarController.h"
 
 CarController::CarController()
