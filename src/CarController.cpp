@@ -47,3 +47,9 @@ void CarController::Update(Vector2 roadPosition, int roadWidth)
             m_position.x -= m_speed;
     }
 }
+
+Rectangle CarController::getRect() const
+{
+    return Rectangle(m_position.x + 12, m_position.y + 5, static_cast<float>(m_texture[0].width - 25),
+                   static_cast<float>(m_texture[0].height - 15));
+}

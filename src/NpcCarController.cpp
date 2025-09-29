@@ -29,7 +29,6 @@ void NpcCarController::Update(Vector2 roadPosition, int roadWidth)
     if (m_position.y > GetScreenHeight() + 10.0)
     {
         RePosition(roadPosition, roadWidth);
-        //ChangeSpeedRandomly(5, 6);
     }
 }
 
@@ -46,14 +45,10 @@ void NpcCarController::RePosition(Vector2 roadPosition, int roadWidth)
     std::uniform_int_distribution<> dist(min_value, max_value);
 
     m_position.x = dist(gen);
-    std::cout << "Random: " <<  dist(gen) << "\n";
 }
 
-void NpcCarController::ChangeSpeedRandomly(int min, int max)
+Rectangle NpcCarController::getRect() const
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(min, max);
-
-     m_speed = dist(gen);
+    return Rectangle(m_position.x + 12, m_position.y + 5, static_cast<float>(m_texture.width - 25),
+                     static_cast<float>(m_texture.height - 15));
 }

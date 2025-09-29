@@ -1,3 +1,5 @@
+#include <iostream>
+#include <ostream>
 #include <vector>
 
 #include "raylib.h"
@@ -38,7 +40,7 @@ int main()
 
     // Scenery
     std::vector<SceneryController> sceneries;
-    sceneries.reserve(6);
+    sceneries.reserve(4);
 
     Texture2D tree = LoadTexture("assets/textures/scenery/tree.png");
     Texture2D palm_tree = LoadTexture("assets/textures/scenery/palm_tree.png");
@@ -56,9 +58,15 @@ int main()
         // Update
         //----------------------------------------------------------------------------------
         car_controller.Update(road.GetPosition(), road.GetWidth());
+
         for (auto& npc_car : npc_cars)
         {
             npc_car.Update(road.GetPosition(), road.GetWidth());
+
+            if (CheckCollisionRecs(car_controller.getRect(), npc_car.getRect()))
+            {
+                std::cout<<"Game Over"<<std::endl;
+            }
         }
 
         for (auto& scenery : sceneries)
@@ -75,12 +83,12 @@ int main()
 
         road.Draw();
 
-        car_controller.Draw();
-
         for (const auto& npc_car : npc_cars)
         {
             npc_car.Draw();
         }
+
+        car_controller.Draw();
 
         for (const auto& scenery : sceneries)
         {

@@ -13,8 +13,7 @@ public:
     void Draw() const;
     void Update(Vector2 roadPosition, int roadWidth);
     void RePosition(Vector2 roadPosition, int roadWidth);
-    void ChangeSpeedRandomly(int min, int max);
-
+    Rectangle getRect() const;
 private:
     Texture2D m_texture;
     Vector2 m_position;
