@@ -8,14 +8,24 @@
 
 Road::Road()
 {
+
+}
+
+Road::~Road()
+{
+
+}
+
+void Road::InitResources()
+{
     for (int i = 0; i < m_texture.size(); i++)
     {
         m_texture[i] = LoadTexture("assets/textures/road/road_64px_a_3.png");
     }
+
     m_position = Vector2(GetScreenWidth() / 2.5f, 0);
 }
-
-Road::~Road()
+void Road::UnloadResources()
 {
     for (int i = 0; i < m_texture.size(); i++)
     {

@@ -10,6 +10,10 @@ class Road
 public:
     Road();
     ~Road();
+
+    void InitResources();
+    void UnloadResources();
+
     void Draw() const;
 
     Vector2 GetPosition() const;
