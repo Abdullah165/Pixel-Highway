@@ -1,8 +1,8 @@
 #include "../include/SceneryController.h"
 
-SceneryController::SceneryController(Texture2D car, Vector2 position, float speed)
+SceneryController::SceneryController(Texture2D texture, Vector2 position, float speed)
 {
-    m_texture = car;
+    m_texture = texture;
     m_position = position;
 
     m_speed = speed;
@@ -34,3 +34,6 @@ void SceneryController::RePosition()
     // RePosition.
     m_position.y = -10;
 }
+
+
+

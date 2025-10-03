@@ -6,7 +6,7 @@
 class SceneryController
 {
 public:
-    SceneryController(Texture2D car, Vector2 position, float speed);
+    SceneryController(Texture2D texture, Vector2 position, float speed);
     ~SceneryController();
 
     void Draw() const;
