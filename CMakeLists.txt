@@ -35,7 +35,9 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/NpcCarController.cpp
         include/NpcCarController.h
         src/SceneryController.cpp
-        include/SceneryController.h)
+        include/SceneryController.h
+        src/Game.cpp
+        include/Game.h)
 
 # Copy the assets directory to the build output directory
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
