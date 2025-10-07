@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <map>
+#include <string>
 #include <vector>
 
 #include "CarController.h"
@@ -28,11 +30,11 @@ private:
     Road m_road;
 
     std::vector<NpcCarController> m_npc_cars;
-    Texture2D m_blue_car, m_green_car, m_yellow_car, m_pink_car, m_grey_car, m_wreck_car;
 
     std::vector<SceneryController> m_sceneries;
-    Texture2D m_tree;
-    Texture2D m_palm_tree;
+
+    // Npc cars and sceneries textures.
+    std::map<std::string,Texture2D> m_textures;
 };
 
 #endif // GAME_H
