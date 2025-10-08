@@ -37,7 +37,9 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/SceneryController.cpp
         include/SceneryController.h
         src/Game.cpp
-        include/Game.h)
+        include/Game.h
+        src/SoundManager.cpp
+        include/SoundManager.h)
 
 # Copy the assets directory to the build output directory
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
