@@ -23,6 +23,8 @@ void Game::Init()
     CreateNpcCars();
 
     CreateScenery();
+
+    m_sound.InitResources();
 }
 
 void Game::Cleanup()
@@ -30,11 +32,13 @@ void Game::Cleanup()
     m_car_controller.UnloadResources();
     m_road.UnloadResources();
 
-    for (auto&[key,texture] : m_textures)
+    for (auto& [key,texture] : m_textures)
     {
         UnloadTexture(texture);
     }
     m_textures.clear();
+
+    m_sound.ShutdownAllSounds();
 
     CloseWindow();
 }
@@ -43,6 +47,9 @@ void Game::Run()
 {
     while (!WindowShouldClose())
     {
+        if (!m_sound.IsSoundStillPlaying("Racing"))
+            m_sound.StartPlayingSound("Racing");
+
         // update
         m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth());
 
@@ -53,6 +60,8 @@ void Game::Run()
             if (CheckCollisionRecs(m_car_controller.getRect(), npc_car.getRect()))
             {
                 //  std::cout<<"Game Over"<<std::endl;
+                m_sound.StartPlayingSound("CarCrash");
+                break;
             }
         }
 
@@ -89,11 +98,12 @@ void Game::CreateNpcCars()
     m_npc_cars.reserve(6);
 
     auto& blue_car = m_textures.emplace("blue car", LoadTexture("assets/textures/car/blue_car.png")).first->second;
-    auto& green_car  = m_textures.emplace("green car",  LoadTexture("assets/textures/car/green_car.png")).first->second;
-    auto& yellow_car = m_textures.emplace("yellow car", LoadTexture("assets/textures/car/yellow_car.png")).first->second;
-    auto& pink_car   = m_textures.emplace("pink car",   LoadTexture("assets/textures/car/pink_car.png")).first->second;
-    auto& grey_car   = m_textures.emplace("grey car",   LoadTexture("assets/textures/car/grey_car.png")).first->second;
-    auto& wreck_car  = m_textures.emplace("wreck car",  LoadTexture("assets/textures/car/wreck_car.png")).first->second;
+    auto& green_car = m_textures.emplace("green car", LoadTexture("assets/textures/car/green_car.png")).first->second;
+    auto& yellow_car = m_textures.emplace("yellow car", LoadTexture("assets/textures/car/yellow_car.png")).first->
+                                  second;
+    auto& pink_car = m_textures.emplace("pink car", LoadTexture("assets/textures/car/pink_car.png")).first->second;
+    auto& grey_car = m_textures.emplace("grey car", LoadTexture("assets/textures/car/grey_car.png")).first->second;
+    auto& wreck_car = m_textures.emplace("wreck car", LoadTexture("assets/textures/car/wreck_car.png")).first->second;
 
 
     m_npc_cars.emplace_back(blue_car, Vector2{GetScreenWidth() / 1.85f, -50.0f}, 5.0);
@@ -108,8 +118,9 @@ void Game::CreateScenery()
 {
     m_sceneries.reserve(4);
 
-    auto& tree = m_textures.emplace("tree",LoadTexture("assets/textures/scenery/tree.png")).first->second;
-    auto& palm_tree = m_textures.emplace("palm tree",LoadTexture("assets/textures/scenery/palm_tree.png")).first->second;
+    auto& tree = m_textures.emplace("tree", LoadTexture("assets/textures/scenery/tree.png")).first->second;
+    auto& palm_tree = m_textures.emplace("palm tree", LoadTexture("assets/textures/scenery/palm_tree.png")).first->
+                                 second;
 
     //Right road scenery
     m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -50.0f}, 5.0);

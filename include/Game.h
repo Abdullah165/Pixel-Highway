@@ -9,6 +9,7 @@
 #include "NpcCarController.h"
 #include "Road.h"
 #include "SceneryController.h"
+#include "SoundManager.h"
 
 class Game
 {
@@ -35,6 +36,8 @@ private:
 
     // Npc cars and sceneries textures.
     std::map<std::string,Texture2D> m_textures;
+
+    SoundManager m_sound;
 };
 
 #endif // GAME_H
