@@ -47,8 +47,12 @@ void Game::Run()
 {
     while (!WindowShouldClose())
     {
-        if (!m_sound.IsSoundStillPlaying("Racing"))
+        //Sounds
+        if (!m_sound.IsSoundStillPlaying("Racing") == false)
             m_sound.StartPlayingSound("Racing");
+
+        if (m_sound.IsSoundStillPlaying("Traffic") == false)
+            m_sound.StartPlayingSound("Traffic");
 
         // update
         m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth());
