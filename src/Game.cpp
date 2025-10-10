@@ -1,4 +1,7 @@
 #include "../include/Game.h"
+
+#include <iostream>
+
 #include "raylib.h"
 
 Game::Game()
@@ -48,7 +51,7 @@ void Game::Run()
     while (!WindowShouldClose())
     {
         //Sounds
-        if (!m_sound.IsSoundStillPlaying("Racing") == false)
+        if (m_sound.IsSoundStillPlaying("Racing") == false)
             m_sound.StartPlayingSound("Racing");
 
         if (m_sound.IsSoundStillPlaying("Traffic") == false)
@@ -57,9 +60,20 @@ void Game::Run()
         // update
         m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth());
 
+        // Gradually increase the world speed every WORLD_SPEED_INTERVAL seconds,
+        // until reaching MAX_WORLD_SPEED.
+        m_worldSpeedTimer += GetFrameTime();
+        if (m_worldSpeedTimer > WORLD_SPEED_INTERVAL)
+        {
+            m_worldSpeed = std::min(m_worldSpeed + 1, MAX_WORLD_SPEED);
+
+            m_worldSpeedTimer = 0.0f;
+            // std::cout << "World Speed = " << m_worldSpeed << std::endl;
+        }
+
         for (auto& npc_car : m_npc_cars)
         {
-            npc_car.Update(m_road.GetPosition(), m_road.GetWidth());
+            npc_car.Update(m_road.GetPosition(), m_road.GetWidth(), m_worldSpeed);
 
             if (CheckCollisionRecs(m_car_controller.getRect(), npc_car.getRect()))
             {
@@ -71,7 +85,7 @@ void Game::Run()
 
         for (auto& scenery : m_sceneries)
         {
-            scenery.Update();
+            scenery.Update(m_worldSpeed);
         }
 
         // draw
@@ -110,12 +124,12 @@ void Game::CreateNpcCars()
     auto& wreck_car = m_textures.emplace("wreck car", LoadTexture("assets/textures/car/wreck_car.png")).first->second;
 
 
-    m_npc_cars.emplace_back(blue_car, Vector2{GetScreenWidth() / 1.85f, -50.0f}, 5.0);
-    m_npc_cars.emplace_back(green_car, Vector2{GetScreenWidth() / 2.0f, -130.0f}, 5.0);
-    m_npc_cars.emplace_back(yellow_car, Vector2{GetScreenWidth() / 2.4f, -250.0f}, 5.0);
-    m_npc_cars.emplace_back(pink_car, Vector2{GetScreenWidth() / 2.25f, -400.0f}, 5.0);
-    m_npc_cars.emplace_back(grey_car, Vector2{GetScreenWidth() / 2.25f, -500.0f}, 5.0);
-    m_npc_cars.emplace_back(wreck_car, Vector2{GetScreenWidth() / 2.25f, -600.0f}, 5.0);
+    m_npc_cars.emplace_back(blue_car, Vector2{GetScreenWidth() / 1.85f, -50.0f}, m_worldSpeed);
+    m_npc_cars.emplace_back(green_car, Vector2{GetScreenWidth() / 2.0f, -130.0f}, m_worldSpeed);
+    m_npc_cars.emplace_back(yellow_car, Vector2{GetScreenWidth() / 2.4f, -250.0f}, m_worldSpeed);
+    m_npc_cars.emplace_back(pink_car, Vector2{GetScreenWidth() / 2.25f, -400.0f}, m_worldSpeed);
+    m_npc_cars.emplace_back(grey_car, Vector2{GetScreenWidth() / 2.25f, -500.0f}, m_worldSpeed);
+    m_npc_cars.emplace_back(wreck_car, Vector2{GetScreenWidth() / 2.25f, -600.0f}, m_worldSpeed);
 }
 
 void Game::CreateScenery()
@@ -127,9 +141,10 @@ void Game::CreateScenery()
                                  second;
 
     //Right road scenery
-    m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -50.0f}, 5.0);
-    m_sceneries.emplace_back(palm_tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -350.0f}, 5.0);
+    m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -50.0f}, m_worldSpeed);
+    m_sceneries.emplace_back(palm_tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -350.0f},
+                             m_worldSpeed);
     //Left road scenery
-    m_sceneries.emplace_back(palm_tree, Vector2{m_road.GetPosition().x - 15, -200.0f}, 5.0);
-    m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x - 15, -500.0f}, 5.0);
+    m_sceneries.emplace_back(palm_tree, Vector2{m_road.GetPosition().x - 15, -200.0f}, m_worldSpeed);
+    m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x - 15, -500.0f}, m_worldSpeed);
 }

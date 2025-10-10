@@ -18,9 +18,9 @@ void SceneryController::Draw() const
     DrawTexture(m_texture, m_position.x, m_position.y, WHITE);
 }
 
-void SceneryController::Update()
+void SceneryController::Update(float worldSpeed)
 {
-    m_position.y += m_speed;
+    m_position.y += worldSpeed;
 
     // Check if the scenery gets the end of road.
     if (m_position.y > GetScreenHeight() + 10.0)

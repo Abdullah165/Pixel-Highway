@@ -11,13 +11,13 @@ public:
     ~NpcCarController();
 
     void Draw() const;
-    void Update(Vector2 roadPosition, int roadWidth);
+    void Update(Vector2 roadPosition, int roadWidth, float worldSpeed);
     void RePosition(Vector2 roadPosition, int roadWidth);
     Rectangle getRect() const;
 private:
     Texture2D m_texture;
     Vector2 m_position;
-    float m_speed;
+    float m_init_speed;
 };
 
 

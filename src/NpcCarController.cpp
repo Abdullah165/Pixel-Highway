@@ -8,7 +8,7 @@ NpcCarController::NpcCarController(Texture2D car, Vector2 position, float speed)
     m_texture = car;
     m_position = position;
 
-    m_speed = speed;
+    m_init_speed = speed;
 }
 
 NpcCarController::~NpcCarController()
@@ -21,9 +21,9 @@ void NpcCarController::Draw() const
     DrawTexture(m_texture, m_position.x, m_position.y, WHITE);
 }
 
-void NpcCarController::Update(Vector2 roadPosition, int roadWidth)
+void NpcCarController::Update(Vector2 roadPosition, int roadWidth,float worldSpeed)
 {
-    m_position.y += m_speed;
+    m_position.y += worldSpeed;
 
     // Check if the car gets the end of road.
     if (m_position.y > GetScreenHeight() + 10.0)

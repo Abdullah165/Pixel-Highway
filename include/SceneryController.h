@@ -10,7 +10,7 @@ public:
     ~SceneryController();
 
     void Draw() const;
-    void Update();
+    void Update(float worldSpeed);
     void RePosition();
 
 private:

@@ -38,6 +38,11 @@ private:
     std::map<std::string,Texture2D> m_textures;
 
     SoundManager m_sound;
+
+    float m_worldSpeed = 3.0f;
+    float m_worldSpeedTimer = 0.0f;
+    const float WORLD_SPEED_INTERVAL = 15.0f;
+    const float MAX_WORLD_SPEED = 10.0f;
 };
 
 #endif // GAME_H
