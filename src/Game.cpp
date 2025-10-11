@@ -58,6 +58,7 @@ void Game::Run()
             m_sound.StartPlayingSound("Traffic");
 
         // update
+
         m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth());
 
         // Gradually increase the world speed every WORLD_SPEED_INTERVAL seconds,
@@ -88,6 +89,8 @@ void Game::Run()
             scenery.Update(m_worldSpeed);
         }
 
+        m_score.Update();
+
         // draw
         BeginDrawing();
         ClearBackground(BLACK);
@@ -106,6 +109,8 @@ void Game::Run()
         {
             scenery.Draw();
         }
+
+        m_score.Draw();
 
         EndDrawing();
     }

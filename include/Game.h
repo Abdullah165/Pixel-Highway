@@ -9,6 +9,7 @@
 #include "NpcCarController.h"
 #include "Road.h"
 #include "SceneryController.h"
+#include "ScoreManager.h"
 #include "SoundManager.h"
 
 class Game
@@ -38,6 +39,8 @@ private:
     std::map<std::string,Texture2D> m_textures;
 
     SoundManager m_sound;
+
+    ScoreManager m_score;
 
     float m_worldSpeed = 3.0f;
     float m_worldSpeedTimer = 0.0f;
