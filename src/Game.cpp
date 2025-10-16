@@ -28,6 +28,8 @@ void Game::Init()
     CreateScenery();
 
     m_sound.InitResources();
+
+    m_gameOver.InitResources();
 }
 
 void Game::Cleanup()
@@ -111,6 +113,8 @@ void Game::Run()
         }
 
         m_score.Draw();
+
+        m_gameOver.Draw(m_road.GetPosition().x,m_road.GetWidth());
 
         EndDrawing();
     }

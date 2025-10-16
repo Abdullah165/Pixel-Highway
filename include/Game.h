@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "CarController.h"
+#include "GameOver.h"
 #include "NpcCarController.h"
 #include "Road.h"
 #include "SceneryController.h"
@@ -41,6 +42,8 @@ private:
     SoundManager m_sound;
 
     ScoreManager m_score;
+
+    GameOver m_gameOver;
 
     float m_worldSpeed = 3.0f;
     float m_worldSpeedTimer = 0.0f;
