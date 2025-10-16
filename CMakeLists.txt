@@ -42,7 +42,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/SoundManager.h
         src/ScoreManager.cpp
         include/ScoreManager.h
-        include/Storage.h)
+        src/GameOver.cpp
+        include/GameOver.h)
 
 # Copy the assets directory to the build output directory
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
