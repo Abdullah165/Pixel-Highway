@@ -1,4 +1,3 @@
-
 #include "../include/ScoreManager.h"
 
 #include <fstream>
@@ -13,8 +12,9 @@ ScoreManager::ScoreManager()
 
 void ScoreManager::Draw() const
 {
-    DrawText(TextFormat("Score: %i", static_cast<int>(m_currentScore)),300, 20, 30, WHITE);
-    DrawText(TextFormat("Best Score: %i", static_cast<int>(m_bestScore)),GetScreenWidth() / 1.6f, 20, 30, WHITE);
+    DrawText(TextFormat("Score: %i", static_cast<int>(m_currentScore)), 300, 20, 30, WHITE);
+
+    DrawText(TextFormat("Best Score: %i", static_cast<int>(m_bestScore)), GetScreenWidth() / 1.6f, 20, 30, WHITE);
 }
 
 void ScoreManager::Update()
