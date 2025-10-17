@@ -8,11 +8,10 @@ class GameOver
 public:
     void InitResources();
 
-    void Draw(float roadXPos, float roadWidth) const;
+    void Draw(float roadXPos, float roadWidth,Font& font) const;
 
 private:
     bool m_isGameOver;
-    Font m_font;
 };
 
 

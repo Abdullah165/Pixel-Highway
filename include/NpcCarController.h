@@ -7,15 +7,15 @@
 class NpcCarController
 {
 public:
-    NpcCarController(Texture2D car, Vector2 position, float speed);
-    ~NpcCarController();
+    NpcCarController();
+    NpcCarController(Texture2D* carTexture, Vector2 position, float speed);
 
     void Draw() const;
     void Update(Vector2 roadPosition, int roadWidth, float worldSpeed);
     void RePosition(Vector2 roadPosition, int roadWidth);
     Rectangle getRect() const;
 private:
-    Texture2D m_texture;
+    Texture2D* m_texture;
     Vector2 m_position;
     float m_init_speed;
 };

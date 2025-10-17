@@ -10,11 +10,11 @@ ScoreManager::ScoreManager()
     m_bestScore = LoadBestScore("best_score.txt");
 }
 
-void ScoreManager::Draw() const
+void ScoreManager::Draw(Font& font) const
 {
-    DrawText(TextFormat("Score: %i", static_cast<int>(m_currentScore)), 300, 20, 30, WHITE);
+    DrawTextEx(font,TextFormat("Score: %i", static_cast<int>(m_currentScore)),(Vector2){ 300, 20.0f },30,5,WHITE);
 
-    DrawText(TextFormat("Best Score: %i", static_cast<int>(m_bestScore)), GetScreenWidth() / 1.6f, 20, 30, WHITE);
+    DrawTextEx(font,TextFormat("Score: %i", static_cast<int>(m_bestScore)),(Vector2){ GetScreenWidth() / 1.6f, 20.0f },30,5,WHITE);
 }
 
 void ScoreManager::Update()

@@ -6,15 +6,15 @@
 class SceneryController
 {
 public:
-    SceneryController(Texture2D texture, Vector2 position, float speed);
-    ~SceneryController();
+    SceneryController();
+    SceneryController(Texture2D* texture, Vector2 position, float speed);
 
     void Draw() const;
     void Update(float worldSpeed);
     void RePosition();
 
 private:
-    Texture2D m_texture;
+    Texture2D* m_texture;
     Vector2 m_position;
     float m_speed;
 };

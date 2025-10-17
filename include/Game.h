@@ -3,7 +3,6 @@
 
 #include <map>
 #include <string>
-#include <vector>
 
 #include "CarController.h"
 #include "GameOver.h"
@@ -32,9 +31,9 @@ private:
     CarController m_car_controller;
     Road m_road;
 
-    std::vector<NpcCarController> m_npc_cars;
+    std::array<NpcCarController,6> m_npc_cars;
 
-    std::vector<SceneryController> m_sceneries;
+    std::array<SceneryController,4> m_sceneries;
 
     // Npc cars and sceneries textures.
     std::map<std::string,Texture2D> m_textures;
@@ -49,6 +48,8 @@ private:
     float m_worldSpeedTimer = 0.0f;
     const float WORLD_SPEED_INTERVAL = 15.0f;
     const float MAX_WORLD_SPEED = 10.0f;
+
+    Font m_font;
 };
 
 #endif // GAME_H

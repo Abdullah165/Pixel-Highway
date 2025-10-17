@@ -2,11 +2,13 @@
 #define PIXEL_HIGHWAY_SCOREMANAGER_H
 #include <string>
 
+#include "raylib.h"
+
 class ScoreManager
 {
 public:
     ScoreManager();
-    void Draw() const;
+    void Draw(Font& font) const;
     void Update();
     int LoadBestScore(const std::string& filename);
     void SaveBestScore(const std::string& filename, int bestScore);

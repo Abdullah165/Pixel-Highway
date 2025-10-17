@@ -1,24 +1,18 @@
 #include "../include/NpcCarController.h"
 
-#include <iostream>
 #include <random>
 
-NpcCarController::NpcCarController(Texture2D car, Vector2 position, float speed)
-{
-    m_texture = car;
-    m_position = position;
+NpcCarController::NpcCarController()
+    : m_texture(nullptr), m_position{0, 0}, m_init_speed(0.0f)
+{}
 
-    m_init_speed = speed;
-}
-
-NpcCarController::~NpcCarController()
-{
-    UnloadTexture(m_texture);
-}
+NpcCarController::NpcCarController(Texture2D* carTexture, Vector2 position, float speed)
+    : m_texture(carTexture), m_position(position), m_init_speed(speed)
+{}
 
 void NpcCarController::Draw() const
 {
-    DrawTexture(m_texture, m_position.x, m_position.y, WHITE);
+    DrawTexture(*m_texture, m_position.x, m_position.y, WHITE);
 }
 
 void NpcCarController::Update(Vector2 roadPosition, int roadWidth,float worldSpeed)
@@ -49,6 +43,6 @@ void NpcCarController::RePosition(Vector2 roadPosition, int roadWidth)
 
 Rectangle NpcCarController::getRect() const
 {
-    return Rectangle(m_position.x + 12, m_position.y + 5, static_cast<float>(m_texture.width - 25),
-                     static_cast<float>(m_texture.height - 15));
+    return Rectangle(m_position.x + 12, m_position.y + 5, static_cast<float>(m_texture->width - 25),
+                     static_cast<float>(m_texture->height - 15));
 }

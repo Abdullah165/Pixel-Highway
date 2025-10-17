@@ -1,21 +1,17 @@
 #include "../include/SceneryController.h"
 
-SceneryController::SceneryController(Texture2D texture, Vector2 position, float speed)
+SceneryController::SceneryController() : m_texture(nullptr), m_position(Vector2{0, 0}), m_speed(0)
 {
-    m_texture = texture;
-    m_position = position;
-
-    m_speed = speed;
 }
 
-SceneryController::~SceneryController()
+SceneryController::SceneryController(Texture2D* texture, Vector2 position, float speed) :
+    m_texture(texture), m_position(position), m_speed(speed)
 {
-    UnloadTexture(m_texture);
 }
 
 void SceneryController::Draw() const
 {
-    DrawTexture(m_texture, m_position.x, m_position.y, WHITE);
+    DrawTexture(*m_texture, m_position.x, m_position.y, WHITE);
 }
 
 void SceneryController::Update(float worldSpeed)
@@ -34,6 +30,3 @@ void SceneryController::RePosition()
     // RePosition.
     m_position.y = -10;
 }
-
-
-

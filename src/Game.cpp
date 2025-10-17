@@ -19,6 +19,8 @@ void Game::Init()
     InitWindow(1280, 720, "Pixel Highway Minimal Test");
     SetTargetFPS(60);
 
+    m_font = LoadFont("assets/fonts/JungleAdventurer.otf");
+
     m_car_controller.InitResources();
 
     m_road.InitResources();
@@ -28,8 +30,6 @@ void Game::Init()
     CreateScenery();
 
     m_sound.InitResources();
-
-    m_gameOver.InitResources();
 }
 
 void Game::Cleanup()
@@ -44,6 +44,8 @@ void Game::Cleanup()
     m_textures.clear();
 
     m_sound.ShutdownAllSounds();
+
+    UnloadFont(m_font);
 
     CloseWindow();
 }
@@ -112,9 +114,9 @@ void Game::Run()
             scenery.Draw();
         }
 
-        m_score.Draw();
+        m_score.Draw(m_font);
 
-        m_gameOver.Draw(m_road.GetPosition().x,m_road.GetWidth());
+        m_gameOver.Draw(m_road.GetPosition().x,m_road.GetWidth(), m_font);
 
         EndDrawing();
     }
@@ -122,8 +124,6 @@ void Game::Run()
 
 void Game::CreateNpcCars()
 {
-    m_npc_cars.reserve(6);
-
     auto& blue_car = m_textures.emplace("blue car", LoadTexture("assets/textures/car/blue_car.png")).first->second;
     auto& green_car = m_textures.emplace("green car", LoadTexture("assets/textures/car/green_car.png")).first->second;
     auto& yellow_car = m_textures.emplace("yellow car", LoadTexture("assets/textures/car/yellow_car.png")).first->
@@ -133,27 +133,27 @@ void Game::CreateNpcCars()
     auto& wreck_car = m_textures.emplace("wreck car", LoadTexture("assets/textures/car/wreck_car.png")).first->second;
 
 
-    m_npc_cars.emplace_back(blue_car, Vector2{GetScreenWidth() / 1.85f, -50.0f}, m_worldSpeed);
-    m_npc_cars.emplace_back(green_car, Vector2{GetScreenWidth() / 2.0f, -130.0f}, m_worldSpeed);
-    m_npc_cars.emplace_back(yellow_car, Vector2{GetScreenWidth() / 2.4f, -250.0f}, m_worldSpeed);
-    m_npc_cars.emplace_back(pink_car, Vector2{GetScreenWidth() / 2.25f, -400.0f}, m_worldSpeed);
-    m_npc_cars.emplace_back(grey_car, Vector2{GetScreenWidth() / 2.25f, -500.0f}, m_worldSpeed);
-    m_npc_cars.emplace_back(wreck_car, Vector2{GetScreenWidth() / 2.25f, -600.0f}, m_worldSpeed);
+    m_npc_cars[0] = NpcCarController(&blue_car, Vector2{GetScreenWidth() / 1.85f, -50.0f}, m_worldSpeed);
+    m_npc_cars[1] = NpcCarController(&green_car, Vector2{GetScreenWidth() / 2.0f, -130.0f}, m_worldSpeed);
+    m_npc_cars[2] = NpcCarController(&yellow_car, Vector2{GetScreenWidth() / 2.4f, -250.0f}, m_worldSpeed);
+    m_npc_cars[3] = NpcCarController(&pink_car, Vector2{GetScreenWidth() / 2.25f, -400.0f}, m_worldSpeed);
+    m_npc_cars[4] = NpcCarController(&grey_car, Vector2{GetScreenWidth() / 2.25f, -500.0f}, m_worldSpeed);
+    m_npc_cars[5] = NpcCarController(&wreck_car, Vector2{GetScreenWidth() / 2.25f, -600.0f}, m_worldSpeed);
 }
 
 void Game::CreateScenery()
 {
-    m_sceneries.reserve(4);
+   // m_sceneries.reserve(4);
 
     auto& tree = m_textures.emplace("tree", LoadTexture("assets/textures/scenery/tree.png")).first->second;
     auto& palm_tree = m_textures.emplace("palm tree", LoadTexture("assets/textures/scenery/palm_tree.png")).first->
                                  second;
 
     //Right road scenery
-    m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -50.0f}, m_worldSpeed);
-    m_sceneries.emplace_back(palm_tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -350.0f},
+    m_sceneries[0] = SceneryController(&tree,Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -50.0f}, m_worldSpeed);
+    m_sceneries[1] = SceneryController(&palm_tree, Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -350.0f},
                              m_worldSpeed);
     //Left road scenery
-    m_sceneries.emplace_back(palm_tree, Vector2{m_road.GetPosition().x - 15, -200.0f}, m_worldSpeed);
-    m_sceneries.emplace_back(tree, Vector2{m_road.GetPosition().x - 15, -500.0f}, m_worldSpeed);
+    m_sceneries[2] = SceneryController(&palm_tree, Vector2{m_road.GetPosition().x - 15, -200.0f}, m_worldSpeed);
+    m_sceneries[3] = SceneryController(&tree, Vector2{m_road.GetPosition().x - 15, -500.0f}, m_worldSpeed);
 }
