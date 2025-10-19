@@ -8,10 +8,11 @@ class ScoreManager
 {
 public:
     ScoreManager();
-    void Draw(Font& font) const;
+    void Draw(const Font& font) const;
     void Update();
     int LoadBestScore(const std::string& filename);
     void SaveBestScore(const std::string& filename, int bestScore);
+    void ResetCurrentScore();
 private:
     float m_currentScore = 0.0f;
     int m_bestScore = 0;

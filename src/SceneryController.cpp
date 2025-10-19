@@ -1,11 +1,11 @@
 #include "../include/SceneryController.h"
 
-SceneryController::SceneryController() : m_texture(nullptr), m_position(Vector2{0, 0}), m_speed(0)
+SceneryController::SceneryController() : m_texture(nullptr), m_position(Vector2{0, 0})
 {
 }
 
-SceneryController::SceneryController(Texture2D* texture, Vector2 position, float speed) :
-    m_texture(texture), m_position(position), m_speed(speed)
+SceneryController::SceneryController(Texture2D* texture, Vector2 position) :
+    m_texture(texture), m_position(position)
 {
 }
 
@@ -21,12 +21,17 @@ void SceneryController::Update(float worldSpeed)
     // Check if the scenery gets the end of road.
     if (m_position.y > GetScreenHeight() + 10.0)
     {
-        RePosition();
+        ReSpawn();
     }
 }
 
-void SceneryController::RePosition()
+void SceneryController::ReSpawn()
 {
     // RePosition.
     m_position.y = -10;
+}
+
+void SceneryController::SetPosition(const Vector2& position)
+{
+    m_position = position;
 }
