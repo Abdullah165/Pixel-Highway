@@ -19,6 +19,22 @@ public:
     ~Game();
 
     void Run();
+    void ResetGame();
+
+    enum TextureID
+    {
+        // NPC cars
+        BlueCar,
+        GreenCar,
+        YellowCar,
+        PinkCar,
+        GreyCar,
+        WreckCar,
+
+        // Scenery
+        Tree,
+        PalmTree
+    };
 
 private:
     void Init();
@@ -31,12 +47,12 @@ private:
     CarController m_car_controller;
     Road m_road;
 
-    std::array<NpcCarController,6> m_npc_cars;
+    std::array<NpcCarController, 6> m_npc_cars;
 
-    std::array<SceneryController,4> m_sceneries;
+    std::array<SceneryController, 4> m_sceneries;
 
     // Npc cars and sceneries textures.
-    std::map<std::string,Texture2D> m_textures;
+    std::map<TextureID, Texture2D> m_textures;
 
     SoundManager m_sound;
 
@@ -44,12 +60,15 @@ private:
 
     GameOver m_gameOver;
 
+    const float INT_WORLD_SPEED = 3.0f;
     float m_worldSpeed = 3.0f;
     float m_worldSpeedTimer = 0.0f;
     const float WORLD_SPEED_INTERVAL = 15.0f;
     const float MAX_WORLD_SPEED = 10.0f;
 
     Font m_font;
+
+    bool m_isGameOver;
 };
 
 #endif // GAME_H
