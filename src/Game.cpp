@@ -1,10 +1,11 @@
 #include "../include/Game.h"
 
 #include <iostream>
+#include <random>
 
 #include "raylib.h"
 
-Game::Game() : m_isGameOver(false)
+Game::Game() : m_isGameOver(false), m_randomBackGroundColor({DARKGRAY,BLACK,DARKBROWN,DARKGREEN})
 {
     Init();
 }
@@ -56,51 +57,49 @@ void Game::Run()
 {
     while (!WindowShouldClose())
     {
-        //Sounds
-        if (m_sound.IsSoundStillPlaying("Racing") == false)
-            m_sound.StartPlayingSound("Racing");
-
-        if (m_sound.IsSoundStillPlaying("Traffic") == false)
-            m_sound.StartPlayingSound("Traffic");
-
         // update
-
         if (m_isGameOver == false)
+        {
+            //Sounds
+            if (m_sound.IsSoundStillPlaying("Racing") == false)
+                m_sound.StartPlayingSound("Racing");
+
+            if (m_sound.IsSoundStillPlaying("Traffic") == false)
+                m_sound.StartPlayingSound("Traffic");
+
             m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth());
 
-        // Gradually increase the world speed every WORLD_SPEED_INTERVAL seconds,
-        // until reaching MAX_WORLD_SPEED.
-        m_worldSpeedTimer += GetFrameTime();
-        if (m_worldSpeedTimer > WORLD_SPEED_INTERVAL)
-        {
-            m_worldSpeed = std::min(m_worldSpeed + 1, MAX_WORLD_SPEED);
-
-            m_worldSpeedTimer = 0.0f;
-            // std::cout << "World Speed = " << m_worldSpeed << std::endl;
-        }
-
-        for (auto& npc_car : m_npc_cars)
-        {
-            npc_car.Update(m_road.GetPosition(), m_road.GetWidth(), m_worldSpeed);
-
-            if (CheckCollisionRecs(m_car_controller.getRect(), npc_car.getRect()))
+            // Gradually increase the world speed every WORLD_SPEED_INTERVAL seconds,
+            // until reaching MAX_WORLD_SPEED.
+            m_worldSpeedTimer += GetFrameTime();
+            if (m_worldSpeedTimer > WORLD_SPEED_INTERVAL)
             {
-                // std::cout<<"Game Over"<<std::endl;
-                m_isGameOver = true;
-                m_sound.StartPlayingSound("CarCrash");
-                m_worldSpeed = 0.0f;
+                m_worldSpeed = std::min(m_worldSpeed + 1, MAX_WORLD_SPEED);
 
-                break;
+                m_worldSpeedTimer = 0.0f;
             }
-        }
 
-        for (auto& scenery : m_sceneries)
-        {
-            scenery.Update(m_worldSpeed);
-        }
+            for (auto& npc_car : m_npc_cars)
+            {
+                npc_car.Update(m_road.GetPosition(), m_road.GetWidth(), m_worldSpeed);
 
-        if (!m_isGameOver)
+                if (CheckCollisionRecs(m_car_controller.getRect(), npc_car.getRect()))
+                {
+                    m_sound.StartPlayingSound("CarCrash");
+                    m_isGameOver = true;
+                    m_worldSpeed = 0.0f;
+
+                    break;
+                }
+            }
+
+            for (auto& scenery : m_sceneries)
+            {
+                scenery.Update(m_worldSpeed);
+            }
+
             m_score.Update();
+        }
 
         //Play again button
         if (CheckCollisionPointRec(GetMousePosition(), m_gameOver.GetPlayAgainButtonRec()))
@@ -119,7 +118,7 @@ void Game::Run()
 
         // draw
         BeginDrawing();
-        ClearBackground(DARKGRAY);
+        ClearBackground(m_selectedBackgroundColor);
 
         m_road.Draw();
 
@@ -153,6 +152,8 @@ void Game::ResetGame()
 
     m_score.ResetCurrentScore();
 
+    m_selectedBackgroundColor = GetRandomBackgroundColor();
+
     //Reset NPCs cars and Sceneries
     m_npc_cars[0].SetPosition(Vector2{GetScreenWidth() / 1.85f, -50.0f});
     m_npc_cars[1].SetPosition(Vector2{GetScreenWidth() / 2.0f, -150.0f});
@@ -165,6 +166,15 @@ void Game::ResetGame()
     m_sceneries[1].SetPosition(Vector2{m_road.GetPosition().x + m_road.GetWidth() - 45.0f, -350.0f});
     m_sceneries[2].SetPosition(Vector2{m_road.GetPosition().x - 15, -200.0f});
     m_sceneries[3].SetPosition(Vector2{m_road.GetPosition().x - 15, -500.0f});
+}
+
+Color Game::GetRandomBackgroundColor() const
+{
+    std::random_device rd; // non-deterministic random seed
+    std::mt19937 gen(rd()); // Mersenne Twister engine
+    std::uniform_int_distribution<> dist(0, m_randomBackGroundColor.size() - 1);
+
+    return m_randomBackGroundColor[dist(gen)];
 }
 
 void Game::CreateNpcCars()

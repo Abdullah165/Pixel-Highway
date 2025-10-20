@@ -19,7 +19,6 @@ public:
     ~Game();
 
     void Run();
-    void ResetGame();
 
     enum TextureID
     {
@@ -35,13 +34,14 @@ public:
         Tree,
         PalmTree
     };
-
 private:
     void Init();
     void Cleanup();
 
     void CreateNpcCars();
     void CreateScenery();
+    void ResetGame();
+    Color GetRandomBackgroundColor() const;
 
 private:
     CarController m_car_controller;
@@ -67,6 +67,9 @@ private:
     const float MAX_WORLD_SPEED = 10.0f;
 
     Font m_font;
+
+    std::array<Color,4> m_randomBackGroundColor;
+    Color m_selectedBackgroundColor;
 
     bool m_isGameOver;
 };
