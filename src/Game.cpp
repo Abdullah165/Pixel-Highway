@@ -5,7 +5,8 @@
 
 #include "raylib.h"
 
-Game::Game() : m_isGameOver(false), m_randomBackGroundColor({DARKGRAY,BLACK,DARKBROWN,DARKGREEN})
+Game::Game() : m_isGameOver(false), m_randomBackGroundColor({DARKGRAY,BLACK,DARKBROWN,DARKGREEN}),
+               m_selectedBackgroundColor(DARKGRAY)
 {
     Init();
 }
@@ -85,6 +86,7 @@ void Game::Run()
 
                 if (CheckCollisionRecs(m_car_controller.getRect(), npc_car.getRect()))
                 {
+                    m_car_controller.PlayCarExplosionVFX();
                     m_sound.StartPlayingSound("CarCrash");
                     m_isGameOver = true;
                     m_worldSpeed = 0.0f;
@@ -108,6 +110,7 @@ void Game::Run()
 
             if (IsMouseButtonPressed(0))
             {
+                m_sound.StartPlayingSound("ButtonClick");
                 ResetGame();
             }
         }
