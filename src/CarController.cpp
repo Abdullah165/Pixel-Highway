@@ -1,13 +1,7 @@
 #include "../include/CarController.h"
 
 #include <format>
-#include <iostream>
-#include <ostream>
 #include <string>
-
-CarController::CarController()
-{
-}
 
 
 void CarController::InitResources()

@@ -1,20 +1,6 @@
-//
-// Created by Lenovo on 9/21/2025.
-//
+
 
 #include "../include/Road.h"
-
-#include <iostream>
-
-Road::Road()
-{
-
-}
-
-Road::~Road()
-{
-
-}
 
 void Road::InitResources()
 {

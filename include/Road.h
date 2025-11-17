@@ -8,8 +8,6 @@
 class Road
 {
 public:
-    Road();
-    ~Road();
 
     void InitResources();
     void UnloadResources();

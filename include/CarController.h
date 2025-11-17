@@ -8,8 +8,6 @@
 class CarController
 {
 public:
-    CarController();
-
     void InitResources();
     void UnloadResources();
 
