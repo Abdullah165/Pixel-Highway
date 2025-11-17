@@ -5,7 +5,7 @@ Your goal is simple: survive as long as you can to set a new high score. One cra
 
 This game was made with C++ and the wonderful raylib library.
 
-
+* **[🎮 Play the game on itch.io!](https://abdullah026.itch.io/pixel-highway)**
 
 
 https://github.com/user-attachments/assets/478a0ac8-29d9-4088-afc3-f2ca6eaa0273
