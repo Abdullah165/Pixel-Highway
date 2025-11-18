@@ -1,7 +1,7 @@
 #ifndef PIXEL_HIGHWAY_SOUNDMANAGER_H
 #define PIXEL_HIGHWAY_SOUNDMANAGER_H
-#include <map>
 #include <string>
+#include <unordered_map>
 
 #include "raylib.h"
 
@@ -15,7 +15,7 @@ public:
 
     bool IsSoundStillPlaying(const std::string& key);
 private:
-    std::map<std::string, Sound> m_sounds;
+    std::unordered_map<std::string, Sound> m_sounds;
 };
 
 
