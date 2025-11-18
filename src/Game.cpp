@@ -194,9 +194,9 @@ void Game::CreateNpcCars()
     m_npc_cars[0] = NpcCarController(&blue_car, Vector2{GetScreenWidth() / 1.85f, -50.0f});
     m_npc_cars[1] = NpcCarController(&green_car, Vector2{GetScreenWidth() / 2.0f, -150.0f});
     m_npc_cars[2] = NpcCarController(&yellow_car, Vector2{GetScreenWidth() / 2.4f, -250.0f});
-    m_npc_cars[3] = NpcCarController(&pink_car, Vector2{GetScreenWidth() / 2.25f, -400.0f});
-    m_npc_cars[4] = NpcCarController(&grey_car, Vector2{GetScreenWidth() / 2.26f, -500.0f});
-    m_npc_cars[5] = NpcCarController(&wreck_car, Vector2{GetScreenWidth() / 2.25f, -600.0f});
+    m_npc_cars[3] = NpcCarController(&pink_car, Vector2{GetScreenWidth() / 2.25f, -350.0f});
+    m_npc_cars[4] = NpcCarController(&grey_car, Vector2{GetScreenWidth() / 2.26f, -450.0f});
+    m_npc_cars[5] = NpcCarController(&wreck_car, Vector2{GetScreenWidth() / 2.25f, -550.0f});
 }
 
 void Game::CreateScenery()
