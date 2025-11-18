@@ -16,8 +16,8 @@ public:
     Rectangle getRect() const;
     void SetPosition(const Vector2& position);
 private:
-    Texture2D* m_Texture;
-    Vector2 m_Position;
+    Texture2D* m_texture;
+    Vector2 m_position;
 };
 
 
