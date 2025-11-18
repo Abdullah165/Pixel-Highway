@@ -28,7 +28,7 @@ void SceneryController::Update(float worldSpeed)
 void SceneryController::ReSpawn()
 {
     // RePosition.
-    m_position.y = -10;
+    m_position.y = 0.0f - m_texture->height;
 }
 
 void SceneryController::SetPosition(const Vector2& position)
