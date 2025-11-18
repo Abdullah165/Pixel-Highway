@@ -8,9 +8,7 @@ This game was made with C++ and the wonderful raylib library.
 * **[🎮 Play the game on itch.io!](https://abdullah026.itch.io/pixel-highway)**
 
 
-https://github.com/user-attachments/assets/478a0ac8-29d9-4088-afc3-f2ca6eaa0273
-
-
+https://github.com/user-attachments/assets/45b9bb21-c88c-404e-b21d-8909e9af3e8f
 
 
 
