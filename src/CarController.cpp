@@ -1,6 +1,6 @@
 #include "../include/CarController.h"
 
-#include <format>
+#include <algorithm>
 #include <string>
 
 
@@ -8,15 +8,15 @@ void CarController::InitResources()
 {
     if (m_loaded) return;
 
-    m_texture[0] = LoadTexture("assets/textures/car/car_24px_8way_white_6.png");
-    m_texture[1] = LoadTexture("assets/textures/car/car_24px_8way_white_7.png");
-    m_texture[2] = LoadTexture("assets/textures/car/car_24px_8way_white_8.png");
+    m_texture[0] = LoadTexture("assets/textures/car/car_24px_8way_white_6.png"); // left
+    m_texture[1] = LoadTexture("assets/textures/car/car_24px_8way_white_7.png"); // straight
+    m_texture[2] = LoadTexture("assets/textures/car/car_24px_8way_white_8.png"); // right
 
     m_position = Vector2{GetScreenWidth() / 2.2f, GetScreenHeight() - 150.0f};
 
-    for (int i = 0; i < m_explosionTextures.size(); i++)
+    for (size_t i = 0; i < m_explosionTextures.size(); i++)
     {
-        std::string filePath = std::format("assets/textures/explosion/frames/1_{}.png", i);
+        const std::string filePath = "assets/textures/explosion/frames/1_" + std::to_string(i) + ".png";
         m_explosionTextures[i] = LoadTexture(filePath.c_str());
     }
 
@@ -27,13 +27,14 @@ void CarController::UnloadResources()
 {
     if (!m_loaded) return;
 
-    UnloadTexture(m_texture[0]);
-    UnloadTexture(m_texture[1]);
-    UnloadTexture(m_texture[2]);
-
-    for (const auto& m_explosionTexture : m_explosionTextures)
+    for (const auto& texture : m_texture)
     {
-        UnloadTexture(m_explosionTexture);
+        UnloadTexture(texture);
+    }
+
+    for (const auto& texture : m_explosionTextures)
+    {
+        UnloadTexture(texture);
     }
 
     m_loaded = false;
@@ -42,11 +43,11 @@ void CarController::UnloadResources()
 void CarController::Draw()
 {
     if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT))
-        DrawTexture(m_texture[2], m_position.x, m_position.y, WHITE);
+        DrawTexture(m_texture[2], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
     else if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))
-        DrawTexture(m_texture[0], m_position.x, m_position.y, WHITE);
+        DrawTexture(m_texture[0], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
     else
-        DrawTexture(m_texture[1], m_position.x, m_position.y, WHITE);
+        DrawTexture(m_texture[1], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
 
     if (m_isExploding)
     {
@@ -58,9 +59,10 @@ void CarController::Draw()
             m_explosionTimer = 0.0f;
         }
 
-        if (m_explosionFrame < m_explosionTextures.size())
+        if (m_explosionFrame < static_cast<int>(m_explosionTextures.size()))
         {
-            DrawTexture(m_explosionTextures[m_explosionFrame], m_position.x - 30, m_position.y - 70, WHITE);
+            DrawTexture(m_explosionTextures[m_explosionFrame],
+                        static_cast<int>(m_position.x) - 30, static_cast<int>(m_position.y) - 70, WHITE);
         }
         else
         {
@@ -69,24 +71,30 @@ void CarController::Draw()
     }
 }
 
-void CarController::Update(const Vector2& roadPosition, int roadWidth)
+void CarController::Update(const Vector2& roadPosition, int roadWidth, float dt)
 {
-    if (IsKeyDown(KEY_D)|| IsKeyDown(KEY_RIGHT))
-    {
-        if (m_position.x < roadPosition.x + roadWidth - 70)
-            m_position.x += m_speed;
-    }
-    else if (IsKeyDown(KEY_A)|| IsKeyDown(KEY_LEFT))
-    {
-        if (m_position.x > roadPosition.x + 20)
-            m_position.x -= m_speed;
-    }
+    const float step = m_speed * dt;
+
+    const float minX = roadPosition.x + 20.0f;
+    const float maxX = roadPosition.x + roadWidth - 70.0f;
+    const float minY = 200.0f;
+    const float maxY = static_cast<float>(GetScreenHeight()) - 150.0f;
+
+    if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT))
+        m_position.x = std::min(m_position.x + step, maxX);
+    else if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))
+        m_position.x = std::max(m_position.x - step, minX);
+    else if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP))
+        m_position.y = std::max(m_position.y - step, minY);
+    else if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN))
+        m_position.y = std::min(m_position.y + step, maxY);
 }
 
 Rectangle CarController::getRect() const
 {
-    return Rectangle(m_position.x + 12, m_position.y + 5, static_cast<float>(m_texture[0].width - 25),
-                     static_cast<float>(m_texture[0].height - 15));
+    return Rectangle{m_position.x + 12, m_position.y + 5,
+                     static_cast<float>(m_texture[0].width - 20),
+                     static_cast<float>(m_texture[0].height - 15)};
 }
 
 void CarController::PlayCarExplosionVFX()
@@ -94,4 +102,9 @@ void CarController::PlayCarExplosionVFX()
     m_isExploding = true;
     m_explosionFrame = 0;
     m_explosionTimer = 0.0f;
+}
+
+void CarController::StopExplosionVFX()
+{
+    m_isExploding = false;
 }

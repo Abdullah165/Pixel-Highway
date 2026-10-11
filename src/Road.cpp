@@ -1,30 +1,24 @@
-
-
 #include "../include/Road.h"
 
 void Road::InitResources()
 {
-    for (int i = 0; i < m_texture.size(); i++)
-    {
-        m_texture[i] = LoadTexture("assets/textures/road/road_64px_a_3.png");
-    }
-
-    m_position = Vector2(GetScreenWidth() / 2.5f, 0);
+    m_texture = LoadTexture("assets/textures/road/road_64px_a_3.png");
+    m_position = Vector2{GetScreenWidth() / 2.5f, 0.0f};
 }
+
 void Road::UnloadResources()
 {
-    for (int i = 0; i < m_texture.size(); i++)
-    {
-        UnloadTexture(m_texture[i]);
-    }
+    UnloadTexture(m_texture);
 }
 
 void Road::Draw() const
 {
-    DrawTexture(m_texture[0], m_position.x, m_position.y,WHITE);
-    for (int i = 1; i < m_texture.size(); i++)
+    for (int i = 0; i < TILE_COUNT; i++)
     {
-        DrawTexture(m_texture[i], m_position.x, m_texture[i].height * i,WHITE);
+        DrawTexture(m_texture,
+                    static_cast<int>(m_position.x),
+                    static_cast<int>(m_position.y) + m_texture.height * i,
+                    WHITE);
     }
 }
 
@@ -35,5 +29,5 @@ Vector2 Road::GetPosition() const
 
 int Road::GetWidth() const
 {
-    return m_texture[0].width;
+    return m_texture.width;
 }
