@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+out/
+*.ipch
+*.user
+*.suo
+
+# CLion
+.idea/
+cmake-build-*/
+
+# Build output
+build/
+build-web/
