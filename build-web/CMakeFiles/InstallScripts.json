@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"F:/RayLib Projects/Pixel Highway/build-web/cmake_install.cmake",
-		"F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/cmake_install.cmake",
-		"F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/raylib/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
