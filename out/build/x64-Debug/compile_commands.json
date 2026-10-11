@@ -1,0 +1,236 @@
+[
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\main.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\main.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/main.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/main.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\CarController.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\CarController.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/CarController.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/CarController.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\Road.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\Road.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/Road.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/Road.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\NpcCarController.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\NpcCarController.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/NpcCarController.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/NpcCarController.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\SceneryController.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\SceneryController.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/SceneryController.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/SceneryController.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\Game.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\Game.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/Game.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/Game.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\SoundManager.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\SoundManager.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/SoundManager.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/SoundManager.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\ScoreManager.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\ScoreManager.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/ScoreManager.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/ScoreManager.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\GameOver.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\GameOver.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/GameOver.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/GameOver.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\CrazySDK.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\CrazySDK.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/CrazySDK.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/CrazySDK.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od -std:c++latest -MDd -RTC1 -Zi /FoCMakeFiles\\Pixel_Highway.dir\\src\\PopupManager.cpp.obj /FdCMakeFiles\\Pixel_Highway.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\src\\PopupManager.cpp\"",
+  "file": "F:/RayLib Projects/Pixel Highway/src/PopupManager.cpp",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/Pixel_Highway.dir/src/PopupManager.cpp.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raudio.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\raudio.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/raudio.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\rcore.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\rcore.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/rcore.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\rmodels.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\rmodels.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/rmodels.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\rshapes.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\rshapes.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/rshapes.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\rtext.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\rtext.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/rtext.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\rtextures.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\rtextures.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/rtextures.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_CRT_SECURE_NO_WARNINGS -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\" -external:I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -external:W0 /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /Fo_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\utils.c.obj /Fd_deps\\raylib-build\\raylib\\CMakeFiles\\raylib.dir\\raylib.pdb /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\utils.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/utils.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\context.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\context.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/context.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\init.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\init.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/init.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\input.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\input.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/input.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\monitor.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\monitor.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/monitor.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\platform.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\platform.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/platform.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\vulkan.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\vulkan.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/vulkan.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\window.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\window.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/window.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\egl_context.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\egl_context.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/egl_context.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\osmesa_context.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\osmesa_context.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/osmesa_context.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_init.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\null_init.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/null_init.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_monitor.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\null_monitor.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/null_monitor.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_window.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\null_window.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/null_window.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\null_joystick.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\null_joystick.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/null_joystick.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_module.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_module.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_module.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_time.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_time.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_time.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_thread.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_thread.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_thread.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_init.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_init.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_init.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_joystick.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_joystick.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_joystick.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_monitor.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_monitor.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_monitor.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\win32_window.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\win32_window.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/win32_window.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj"
+},
+{
+  "directory": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug",
+  "command": "\"G:\\Programms\\Visual Studio 2026\\Visual Studio EXE\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\include\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\" -I\"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-build\\raylib\\external\\glfw\\src\" /DWIN32 /D_WINDOWS /Ob0 /Od -MDd -RTC1 -Zi /W3 /Fo_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\wgl_context.c.obj /Fd_deps\\raylib-build\\raylib\\external\\glfw\\src\\CMakeFiles\\glfw.dir\\ /FS -c \"F:\\RayLib Projects\\Pixel Highway\\out\\build\\x64-Debug\\_deps\\raylib-src\\src\\external\\glfw\\src\\wgl_context.c\"",
+  "file": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src/src/external/glfw/src/wgl_context.c",
+  "output": "F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj"
+}
+]

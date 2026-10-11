@@ -11,9 +11,9 @@ class SoundManager
 public:
     void InitResources();
     void StartPlayingSound(const std::string& key);
+    bool IsSoundStillPlaying(const std::string& key) const;
     void ShutdownAllSounds();
 
-    bool IsSoundStillPlaying(const std::string& key);
 private:
     std::unordered_map<std::string, Sound> m_sounds;
 };

@@ -12,14 +12,15 @@ public:
     void UnloadResources();
 
     void Draw();
-    void Update(const Vector2& roadPosition, int roadWidth);
+    void Update(const Vector2& roadPosition, int roadWidth, float dt);
     Rectangle getRect() const;
 
     void PlayCarExplosionVFX();
+    void StopExplosionVFX();
 
 private:
-    std::array<Texture2D, 3> m_texture;
-    std::array<Texture2D, 33> m_explosionTextures;
+    std::array<Texture2D, 3> m_texture{};
+    std::array<Texture2D, 33> m_explosionTextures{};
     Vector2 m_position{};
     float m_speed = 3.0f;
     bool m_loaded = false;

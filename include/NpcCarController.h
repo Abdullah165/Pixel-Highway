@@ -15,9 +15,21 @@ public:
     void Respawn(const Vector2& roadPosition, int roadWidth);
     Rectangle getRect() const;
     void SetPosition(const Vector2& position);
+
+    // Near-miss tracking (used by Game::CheckNearMisses)
+    bool WasNear() const;
+    void SetWasNear(bool value);
+    bool IsNearMissHandled() const;
+    void MarkNearMissHandled();
+
 private:
+    void ResetNearMiss();
+
     Texture2D* m_texture;
     Vector2 m_position;
+
+    bool m_wasNear = false;          // touched the player's danger zone
+    bool m_nearMissHandled = false;  // already counted (or disqualified) for this pass
 };
 
 

@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=G:/Programms/Visual Studio 2026/Visual Studio EXE/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/fc-stamp/raylib/download-raylib.cmake;COMMAND;G:/Programms/Visual Studio 2026/Visual Studio EXE/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/fc-stamp/raylib/verify-raylib.cmake;COMMAND;G:/Programms/Visual Studio 2026/Visual Studio EXE/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/CMakeFiles/fc-stamp/raylib/extract-raylib.cmake
+source_dir=F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps/raylib-src
+work_dir=F:/RayLib Projects/Pixel Highway/out/build/x64-Debug/_deps
+url(s)=https://github.com/raysan5/raylib/archive/refs/tags/5.5.tar.gz
+hash=
+      no_extract=
+

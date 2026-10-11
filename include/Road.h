@@ -1,6 +1,5 @@
 #ifndef PIXEL_HIGHWAY_ROAD_H
 #define PIXEL_HIGHWAY_ROAD_H
-#include <array>
 
 #include "raylib.h"
 
@@ -8,7 +7,6 @@
 class Road
 {
 public:
-
     void InitResources();
     void UnloadResources();
 
@@ -18,8 +16,10 @@ public:
     int GetWidth() const;
 
 private:
-    std::array<Texture2D,3> m_texture;
-    Vector2 m_position;
+    static constexpr int TILE_COUNT = 3; // how many road images are stacked vertically
+
+    Texture2D m_texture{};
+    Vector2 m_position{};
 };
 
 

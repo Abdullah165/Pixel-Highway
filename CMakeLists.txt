@@ -2,31 +2,28 @@ cmake_minimum_required(VERSION 4.0)
 project(Pixel_Highway)
 
 set(CMAKE_CXX_STANDARD 23)
-
-# Generate compile_commands.json
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Dependencies
 set(RAYLIB_VERSION 5.5)
 
-# Look for Raylib and download if necessary
-find_package(raylib ${RAYLIB_VERSION} QUIET)
+# Raylib: download it when building for web, or when it isn't installed
+if (NOT "${PLATFORM}" STREQUAL "Web")
+    find_package(raylib ${RAYLIB_VERSION} QUIET)
+endif()
+
 if (NOT raylib_FOUND)
     include(FetchContent)
+    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
     FetchContent_Declare(
             raylib
             DOWNLOAD_EXTRACT_TIMESTAMP OFF
             URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
     )
-    FetchContent_GetProperties(raylib)
-    if (NOT raylib_POPULATED)
-        set(FETCHCONTENT_QUIET NO)
-        FetchContent_MakeAvailable(raylib)
-        set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-    endif()
+    set(FETCHCONTENT_QUIET NO)
+    FetchContent_MakeAvailable(raylib)
 endif()
 
-# Our Project
 add_executable(${PROJECT_NAME} src/main.cpp
         src/CarController.cpp
         include/CarController.h
@@ -43,15 +40,32 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/ScoreManager.cpp
         include/ScoreManager.h
         src/GameOver.cpp
-        include/GameOver.h)
+        include/GameOver.h
+        src/CrazySDK.cpp
+        include/CrazySDK.h 
+        src/PopupManager.cpp
+        include/PopupManager.h
+        include/TextUtils.h)
 
-# Copy the assets directory to the build output directory
-file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
-
-# Link our project against Raylib
 target_link_libraries(${PROJECT_NAME} raylib)
 
-# Web Configurations
-if (${PLATFORM} STREQUAL "Web")
-    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
+if ("${PLATFORM}" STREQUAL "Web")
+    # Output index.html so CrazyGames can find it
+    set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "index" SUFFIX ".html")
+
+    # Re-link when shell.html changes
+    set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY LINK_DEPENDS "${CMAKE_SOURCE_DIR}/shell.html")
+
+    target_link_options(${PROJECT_NAME} PRIVATE
+            -sUSE_GLFW=3
+            -sASYNCIFY
+            -sALLOW_MEMORY_GROWTH=1
+            -sINITIAL_MEMORY=134217728
+            -sSTACK_SIZE=5242880
+            -sEXPORTED_RUNTIME_METHODS=ccall,HEAPF32,HEAP8,HEAPU8
+            "--preload-file=${CMAKE_SOURCE_DIR}/assets@/assets"
+            "--shell-file=${CMAKE_SOURCE_DIR}/shell.html")
+else()
+    # Desktop: copy the assets next to the exe
+    file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
 endif()

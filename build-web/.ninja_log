@@ -1,0 +1,37 @@
+# ninja log v7
+87	902	8132409520881686	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o	4644e453e50039a0
+41	1129	8132409520416382	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o	68006c969068c2ec
+55	2434	8132409520556384	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o	234481a87586db6e
+16	2584	8132409520165100	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o	8b833b4471a9d6a9
+73	5697	8132409520736453	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o	eeccf80fc3c7995e
+39	12150	8132594995382534	CMakeFiles/Pixel_Highway.dir/src/main.cpp.o	35d5b0ddd6db56dd
+1129	6245	8132409531298798	CMakeFiles/Pixel_Highway.dir/src/GameOver.cpp.o	d5df26a7c67f9ad5
+206	6246	8132409522068015	CMakeFiles/Pixel_Highway.dir/src/SceneryController.cpp.o	c963166bde2e376e
+80	6184	8132594995795381	CMakeFiles/Pixel_Highway.dir/src/Road.cpp.o	b3eddd7faf200806
+69	12098	8132594995688147	CMakeFiles/Pixel_Highway.dir/src/CarController.cpp.o	50ba788e24fd6333
+126	11258	8132594996261123	CMakeFiles/Pixel_Highway.dir/src/SoundManager.cpp.o	d96c8422ed32c572
+96	6194	8132594995960904	CMakeFiles/Pixel_Highway.dir/src/NpcCarController.cpp.o	b0aa6461b516a9e1
+141	11703	8132594996401321	CMakeFiles/Pixel_Highway.dir/src/ScoreManager.cpp.o	124b7f1e74a6bf0f
+28	7358	8132409520280915	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o	1869d899e8170e7d
+110	12287	8132594996090906	CMakeFiles/Pixel_Highway.dir/src/Game.cpp.o	6202a657ee75002e
+4	8897	8132409520045020	_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o	f2feceeaeda6a123
+8897	9333	8132409608979625	_deps/raylib-build/raylib/libraylib.a	2fdc1b6eb9f74a72
+12288	30555	8132595117874503	index.html	f1650a65d745c0b5
+3	2334	8133234855082783	build.ninja	7fd61f79327bc7bb
+3	2334	8133234852663973	F:/RayLib Projects/Pixel Highway/build-web/cmake_install.cmake	7fd61f79327bc7bb
+3	2334	8133234854238364	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/cmake_install.cmake	7fd61f79327bc7bb
+3	2334	8133234854656899	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/raylib/cmake_install.cmake	7fd61f79327bc7bb
+3	2334	8133234854626829	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/CTestTestfile.cmake	7fd61f79327bc7bb
+3	2334	8133234855012707	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/raylib/CTestTestfile.cmake	7fd61f79327bc7bb
+78	12547	8133234855082783	build.ninja	7fd61f79327bc7bb
+78	12547	8133234855082783	F:/RayLib Projects/Pixel Highway/build-web/cmake_install.cmake	7fd61f79327bc7bb
+78	12547	8133234855082783	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/cmake_install.cmake	7fd61f79327bc7bb
+78	12547	8133234855082783	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/raylib/cmake_install.cmake	7fd61f79327bc7bb
+78	12547	8133234855082783	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/CTestTestfile.cmake	7fd61f79327bc7bb
+78	12547	8133234855082783	F:/RayLib Projects/Pixel Highway/build-web/_deps/raylib-build/raylib/CTestTestfile.cmake	7fd61f79327bc7bb
+2940	22410	8133234884924401	CMakeFiles/Pixel_Highway.dir/src/GameOver.cpp.o	d5df26a7c67f9ad5
+2957	24883	8133234885100020	CMakeFiles/Pixel_Highway.dir/src/CrazySDK.cpp.o	2e3711a11b2d3bde
+2838	26593	8133234883903744	CMakeFiles/Pixel_Highway.dir/src/main.cpp.o	35d5b0ddd6db56dd
+2913	27391	8133234884659544	CMakeFiles/Pixel_Highway.dir/src/CarController.cpp.o	50ba788e24fd6333
+2926	27422	8133234884784351	CMakeFiles/Pixel_Highway.dir/src/Game.cpp.o	6202a657ee75002e
+27423	58426	8133235129751241	index.html	dcb2f6e239261a68

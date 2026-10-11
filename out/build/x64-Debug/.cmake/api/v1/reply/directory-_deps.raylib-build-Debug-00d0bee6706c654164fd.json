@@ -1,0 +1,19 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 10
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/raylib-build",
+		"source" : "out/build/x64-Debug/_deps/raylib-src"
+	}
+}

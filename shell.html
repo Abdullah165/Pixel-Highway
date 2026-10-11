@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pixel Highway</title>
+    <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas#canvas {
+            display: block;
+            border: 0;
+            background: #000;
+            touch-action: none;
+            width: var(--game-w, 100vw);
+            height: var(--game-h, 100vh);
+            /* image-rendering: pixelated; */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+
+    <script>
+    // ---- Fit the 16:9 game inside the window ----
+    const GAME_ASPECT = 1280 / 720;
+    function fitCanvas() {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      if (w / h > GAME_ASPECT) w = h * GAME_ASPECT;
+      else h = w / GAME_ASPECT;
+      document.documentElement.style.setProperty('--game-w', Math.floor(w) + 'px');
+      document.documentElement.style.setProperty('--game-h', Math.floor(h) + 'px');
+    }
+    window.addEventListener('resize', fitCanvas);
+    fitCanvas();
+
+    // ---- CrazyGames SDK ----
+    window.cgReady = false;       // true only when the SDK can be used
+    window.cgGameLoaded = false;
+
+    (async () => {
+      try {
+        if (!window.CrazyGames || !window.CrazyGames.SDK) return; // blocked (adblocker?)
+        await window.CrazyGames.SDK.init();
+
+        // "local" (localhost), "crazygames", or "disabled" (any other website)
+        const env = window.CrazyGames.SDK.environment;
+        if (env !== "local" && env !== "crazygames") return;
+
+        window.cgReady = true;
+        window.CrazyGames.SDK.game.loadingStart();
+        if (window.cgGameLoaded) window.CrazyGames.SDK.game.loadingStop();
+      } catch (e) {
+        console.warn("CrazyGames SDK not available", e);
+      }
+    })();
+
+    // Called from C++ when the game has finished loading.
+    window.cgMarkLoaded = function () {
+      window.cgGameLoaded = true;
+      if (window.cgReady) {
+        try { window.CrazyGames.SDK.game.loadingStop(); } catch (e) {}
+      }
+    };
+
+    var Module = {
+      canvas: document.getElementById('canvas')
+    };
+    </script>
+
+    {{{ SCRIPT }}}
+</body>
+</html>
