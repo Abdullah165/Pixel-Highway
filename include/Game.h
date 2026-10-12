@@ -13,6 +13,7 @@
 #include "ScoreManager.h"
 #include "SoundManager.h"
 #include "PopupManager.h"
+#include "ScreenShake.h"
 
 class Game
 {
@@ -51,6 +52,7 @@ private:
     void PlaceSceneries();
     void ResetGame();
     void CheckNearMisses();
+    void OnCrash();
 
     void UpdateGame(float dt);
     void DrawGame();
@@ -75,6 +77,9 @@ private:
     // A "close call" is an NPC car touching this much extra space around your car's hitbox.
     static constexpr float NEAR_MISS_MARGIN_X = 18.0f;
     static constexpr float NEAR_MISS_MARGIN_Y = 10.0f;
+    static constexpr float CRASH_SHAKE_DURATION = 0.6f;  // seconds of shaking
+    static constexpr float CRASH_SHAKE_STRENGTH = 12.0f; // pixels at the start
+    static constexpr float GAME_OVER_DELAY = 1.0f;       // seconds from crash to Game Over screen
 
     CarController m_car_controller;
     Road m_road;
@@ -89,6 +94,12 @@ private:
     ScoreManager m_score;
     GameOver m_gameOver;
     PopupManager m_popups;
+
+    ScreenShake m_shake;
+    Camera2D m_camera{ Vector2{0.0f, 0.0f}, Vector2{0.0f, 0.0f}, 0.0f, 1.0f };
+
+    bool m_isCrashing = false; // crash sequence running (before the Game Over screen)
+    float m_crashTimer = 0.0f;
 
     Font m_font{};
 

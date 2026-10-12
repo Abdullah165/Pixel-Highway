@@ -74,7 +74,7 @@ int ScoreManager::GetMultiplier() const
 void ScoreManager::Draw(const Font& font) const
 {
 	DrawTextOutlined(font, TextFormat("Score: %i", static_cast<int>(m_currentScore)),
-		Vector2{ 300.0f, 20.0f }, 30, 5, WHITE, BLACK);
+		Vector2{ 280.0f, 20.0f }, 30, 5, WHITE, BLACK);
 
 	DrawTextOutlined(font, TextFormat("Best Score: %i", m_bestScore),
 		Vector2{ GetScreenWidth() / 1.6f, 20.0f }, 30, 5, WHITE, BLACK);
@@ -83,12 +83,12 @@ void ScoreManager::Draw(const Font& font) const
 	if (m_combo > 0)
 	{
 		DrawTextOutlined(font, TextFormat("Combo x%i", GetMultiplier()),
-			Vector2{ 300.0f, 60.0f }, 26, 4, ORANGE, BLACK);
+			Vector2{ 280.0f, 60.0f }, 26, 4, ORANGE, BLACK);
 
 		const int barWidth = 160;
 		const float fraction = std::clamp(m_comboTimer / COMBO_TIME, 0.0f, 1.0f);
-		DrawRectangle(300, 95, barWidth, 8, ColorAlpha(BLACK, 0.5f));
-		DrawRectangle(300, 95, static_cast<int>(barWidth * fraction), 8, ORANGE);
+		DrawRectangle(280, 95, barWidth, 8, ColorAlpha(BLACK, 0.5f));
+		DrawRectangle(280, 95, static_cast<int>(barWidth * fraction), 8, ORANGE);
 	}
 }
 
