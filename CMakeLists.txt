@@ -24,7 +24,8 @@ if (NOT raylib_FOUND)
     FetchContent_MakeAvailable(raylib)
 endif()
 
-add_executable(${PROJECT_NAME} src/main.cpp
+add_executable(${PROJECT_NAME} 
+        src/main.cpp
         src/CarController.cpp
         include/CarController.h
         src/Road.cpp
@@ -46,7 +47,10 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/PopupManager.cpp
         include/PopupManager.h
         include/TextUtils.h 
-        include/ScreenShake.h)
+        include/ScreenShake.h 
+        include/Difficulty.h 
+        include/CoinManager.h
+        src/CoinManager.cpp "include/Steering.h")
 
 target_link_libraries(${PROJECT_NAME} raylib)
 

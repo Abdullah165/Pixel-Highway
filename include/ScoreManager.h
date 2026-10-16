@@ -1,12 +1,18 @@
 #ifndef PIXEL_HIGHWAY_SCOREMANAGER_H
 #define PIXEL_HIGHWAY_SCOREMANAGER_H
 
+#include <array>
+
+#include "Difficulty.h"
 #include "raylib.h"
 
 class ScoreManager
 {
 public:
     ScoreManager();
+
+    // Switches to the best score of that difficulty. Call it before each run starts.
+    void SetDifficulty(Difficulty difficulty);
 
     void Update();
     void Draw(const Font& font) const;
@@ -17,12 +23,17 @@ public:
     void ResetCombo();
     int GetMultiplier() const;
 
-    // Saves the best score, but only if it changed. Call it when a run ends.
+    // Saves the best score of the current difficulty, but only if it changed.
     void SaveBestScore();
+    // Best score of any difficulty (used by the start screen)
+    int GetBestScore(Difficulty difficulty) const;
 
 private:
-    int LoadBestScore() const;
-    void WriteBestScore(int bestScore) const;
+    static int ToIndex(Difficulty difficulty);
+    static const char* ToName(Difficulty difficulty);
+
+    int LoadBestScore(int index) const;
+    void WriteBestScore(int index, int bestScore) const;
     void UpdateBest();
 
     static constexpr int NEAR_MISS_BONUS = 50;   // points at x1
@@ -30,7 +41,9 @@ private:
     static constexpr float COMBO_TIME = 5.0f;    // seconds to get the next close call
 
     float m_currentScore = 0.0f;
-    int m_bestScore = 0;
+
+    Difficulty m_difficulty = Difficulty::Medium;
+    std::array<int, 3> m_bestScores{}; // Easy, Medium, Hard
     bool m_bestScoreChanged = false;
 
     int m_combo = 0;           // close calls in a row

@@ -1,8 +1,9 @@
 #include "../include/CarController.h"
+#include "../include/Steering.h"
+#include "../include/Game.h"
 
 #include <algorithm>
 #include <string>
-#include "../include/Game.h"
 
 
 void CarController::InitResources()
@@ -100,9 +101,9 @@ void CarController::Draw(bool isGameOver, bool isCrashing)
 	}
 }
 
-void CarController::Update(const Vector2& roadPosition, int roadWidth, float dt)
+void CarController::Update(const Vector2& roadPosition, int roadWidth, float dt, float worldSpeed)
 {
-	const float step = m_speed * dt;
+	const float step = Steering::SpeedFor(worldSpeed) * dt;
 
 	const float minX = roadPosition.x + 20.0f;
 	const float maxX = roadPosition.x + roadWidth - 70.0f;

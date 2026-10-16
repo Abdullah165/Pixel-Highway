@@ -13,7 +13,7 @@ public:
 
 	void Draw(bool isGameOver, bool isCrashing);
 
-	void Update(const Vector2& roadPosition, int roadWidth, float dt);
+	void Update(const Vector2& roadPosition, int roadWidth, float dt, float worldSpeed);
 	Rectangle getRect() const;
 
 	void PlayCarExplosionVFX();
@@ -23,7 +23,6 @@ private:
 	std::array<Texture2D, 3> m_texture{};
 	std::array<Texture2D, 33> m_explosionTextures{};
 	Vector2 m_position{};
-	float m_speed = 3.0f;
 	bool m_loaded = false;
 	bool m_isExploding = false;
 	int m_explosionFrame = 0;

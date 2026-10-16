@@ -11,6 +11,8 @@ class SoundManager
 public:
     void InitResources();
     void StartPlayingSound(const std::string& key);
+    void StopPlayingSound(const std::string& key);
+    void PlaySoundWithPitch(const std::string& key, float pitch);
     bool IsSoundStillPlaying(const std::string& key) const;
     void ShutdownAllSounds();
 

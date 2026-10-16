@@ -1,4 +1,5 @@
 #include "../include/Game.h"
+#include "../include/TextUtils.h"
 
 #include <ctime>
 
@@ -19,6 +20,17 @@ namespace
 		"assets/textures/scenery/tree.png",
 		"assets/textures/scenery/palm_tree.png"
 	};
+
+	float GetStartSpeed(Difficulty difficulty)
+	{
+		switch (difficulty)
+		{
+		case Difficulty::Easy:   return 3.0f;
+		case Difficulty::Medium: return 5.0f;
+		case Difficulty::Hard:   return 7.0f;
+		}
+		return 5.0f;
+	}
 }
 
 Game::Game()
@@ -51,6 +63,18 @@ void Game::Init()
 	CreateScenery();
 
 	m_gameOver.Init(m_road.GetPosition().x, static_cast<float>(m_road.GetWidth()));
+
+
+	// Difficulty buttons, centered in a row
+	const float buttonWidth = 150.0f;
+	const float buttonHeight = 50.0f;
+	const float gap = 20.0f;
+	const float startX = (SCREEN_WIDTH - (buttonWidth * 3.0f + gap * 2.0f)) / 2.0f;
+	const float buttonY = SCREEN_HEIGHT / 1.7f;
+
+	m_easyButtonBounds = Rectangle{ startX, buttonY, buttonWidth, buttonHeight };
+	m_mediumButtonBounds = Rectangle{ startX + (buttonWidth + gap), buttonY, buttonWidth, buttonHeight };
+	m_hardButtonBounds = Rectangle{ startX + (buttonWidth + gap) * 2.0f, buttonY, buttonWidth, buttonHeight };
 }
 
 void Game::Cleanup()
@@ -111,23 +135,68 @@ void Game::UpdateDrawFrame()
 
 void Game::DrawStartScreen()
 {
-	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || GetKeyPressed() != 0)
+	const Vector2 mouse = GetMousePosition();
+
+	const bool hoverEasy = CheckCollisionPointRec(mouse, m_easyButtonBounds);
+	const bool hoverMedium = CheckCollisionPointRec(mouse, m_mediumButtonBounds);
+	const bool hoverHard = CheckCollisionPointRec(mouse, m_hardButtonBounds);
+
+	// Only a click on one of the three buttons starts the game.
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
-		m_sound.InitResources(); // audio starts AFTER the user's click
-		m_started = true;
-		CrazySDK::GameplayStart();
+		if (hoverEasy)
+			StartGame(Difficulty::Easy);
+		else if (hoverMedium)
+			StartGame(Difficulty::Medium);
+		else if (hoverHard)
+			StartGame(Difficulty::Hard);
 	}
 
 	BeginDrawing();
 	ClearBackground(BLACK);
 
-	const char* text = "Click to Start";
+	const char* text = "Select Difficulty to Start";
 	const Vector2 size = MeasureTextEx(m_font, text, 40, 4);
 	DrawTextEx(m_font, text,
 		Vector2{ (SCREEN_WIDTH - size.x) / 2.0f, (SCREEN_HEIGHT - size.y) / 2.0f },
 		40, 4, WHITE);
 
+	// Normal: yellow button with red text. Hover: orange button with black text.
+	DrawButton(m_font, m_easyButtonBounds, "Easy",
+		hoverEasy ? ORANGE : YELLOW, hoverEasy ? BLACK : RED);
+	DrawButton(m_font, m_mediumButtonBounds, "Medium",
+		hoverMedium ? ORANGE : YELLOW, hoverMedium ? BLACK : RED);
+	DrawButton(m_font, m_hardButtonBounds, "Hard",
+		hoverHard ? ORANGE : YELLOW, hoverHard ? BLACK : RED);
+
+	// Best score of each difficulty, centered under its button
+	const auto drawBest = [this](const Rectangle& bounds, Difficulty difficulty)
+	{
+		const char* label = TextFormat("Best: %i", m_score.GetBestScore(difficulty));
+		const Vector2 size = MeasureTextEx(m_font, label, 20, 3);
+		DrawTextEx(m_font, label,
+			Vector2{ bounds.x + (bounds.width - size.x) / 2.0f, bounds.y + bounds.height + 10.0f },
+			20, 3, LIGHTGRAY);
+	};
+
+	drawBest(m_easyButtonBounds, Difficulty::Easy);
+	drawBest(m_mediumButtonBounds, Difficulty::Medium);
+	drawBest(m_hardButtonBounds, Difficulty::Hard);
+
 	EndDrawing();
+}
+
+void Game::StartGame(Difficulty difficulty)
+{
+	m_difficulty = difficulty;
+	m_startSpeed = GetStartSpeed(difficulty);
+
+	m_sound.InitResources(); // audio starts AFTER the user's click
+	m_sound.StartPlayingSound("ButtonClick");
+	m_started = true;
+
+	m_score.SetDifficulty(difficulty); // picks that difficulty's best score
+	ResetGame(); // applies the start speed and calls CrazySDK::GameplayStart()
 }
 
 void Game::UpdateGame(float dt)
@@ -154,6 +223,22 @@ void Game::UpdateGame(float dt)
 		return;
 	}
 
+	// Coins: move, hide the ones under traffic, collect the ones touching the car.
+	m_coins.Update(m_worldSpeed * dt, frameTime,
+		m_road.GetPosition().x, static_cast<float>(m_road.GetWidth()), m_worldSpeed);
+
+	for (const auto& npc_car : m_npc_cars)
+		m_coins.RemoveOverlapping(npc_car.getRect());
+
+	const std::vector<Vector2> collected = m_coins.CollectTouching(m_car_controller.getRect());
+	if (!collected.empty())
+	{
+		m_sound.PlaySoundWithPitch("Coin", m_coins.GetPickupPitch());
+
+		for (const Vector2& position : collected)
+			m_popups.Add("+1", Vector2{ position.x, position.y - 24.0f }, GOLD);
+	}
+
 	if (!m_isGameOver)
 	{
 		// Sounds
@@ -163,7 +248,7 @@ void Game::UpdateGame(float dt)
 		if (!m_sound.IsSoundStillPlaying("Traffic"))
 			m_sound.StartPlayingSound("Traffic");
 
-		m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth(), dt);
+		m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth(), dt, m_worldSpeed);
 
 		if (m_invincibleTimer > 0.0f)
 			m_invincibleTimer -= frameTime;
@@ -207,18 +292,27 @@ void Game::UpdateGame(float dt)
 		const Vector2 mouse = GetMousePosition();
 
 		const bool hoverPlayAgain = CheckCollisionPointRec(mouse, m_gameOver.GetPlayAgainButtonRec());
+		const bool hoverMenu = CheckCollisionPointRec(mouse, m_gameOver.GetMenuButtonRec());
 		const bool hoverContinue = !m_continueUsed &&
 			CheckCollisionPointRec(mouse, m_gameOver.GetContinueButtonRec());
+		const bool hoverDouble = GetDoubleCoinsOffer() > 0 &&
+			CheckCollisionPointRec(mouse, m_gameOver.GetDoubleButtonRec());
 
 		m_gameOver.ChangePlayAgainTextColor(hoverPlayAgain ? WHITE : RED);
+		m_gameOver.ChangeMenuTextColor(hoverMenu ? WHITE : RED);
 		m_gameOver.ChangeContinueTextColor(hoverContinue ? WHITE : RED);
+		m_gameOver.ChangeDoubleTextColor(hoverDouble ? WHITE : GOLD);
 
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
-			if (hoverContinue)
+			if (hoverDouble)
+				OnDoubleCoinsPressed();
+			else if (hoverContinue)
 				OnContinuePressed();
 			else if (hoverPlayAgain)
 				OnPlayAgainPressed();
+			else if (hoverMenu)
+				OnMenuPressed();
 		}
 	}
 }
@@ -238,12 +332,38 @@ void Game::OnContinuePressed()
 	});
 }
 
+int Game::GetDoubleCoinsOffer() const
+{
+	const int bonus = m_coins.GetDoubleableCoins();
+	return bonus >= MIN_COINS_TO_OFFER_DOUBLE ? bonus : 0;
+}
+
+void Game::OnDoubleCoinsPressed()
+{
+	m_sound.StartPlayingSound("ButtonClick");
+
+	// Rewarded ad: the player chose to watch it, the reward is a bonus equal to this run's coins.
+	CrazySDK::RequestAd(CrazySDK::AdType::Rewarded, [this](bool completed)
+	{
+		if (completed)
+		{
+			m_coins.DoubleRunCoins();
+			m_watchedRewardedAd = true;
+			m_sound.PlaySoundWithPitch("Coin", 1.9f);
+		}
+		else
+		{
+			m_noAdMessageTimer = 3.0f; // ad failed / not available
+		}
+	});
+}
+
 void Game::OnPlayAgainPressed()
 {
 	m_sound.StartPlayingSound("ButtonClick");
 
-	// The player already watched a rewarded ad in this run: no second ad right away.
-	if (m_continueUsed)
+	//A rewarded ad was already watched in this run
+	if (m_watchedRewardedAd)
 	{
 		ResetGame();
 		return;
@@ -257,10 +377,41 @@ void Game::OnPlayAgainPressed()
 	});
 }
 
+void Game::OnMenuPressed()
+{
+	m_sound.StartPlayingSound("ButtonClick");
+
+	//A rewarded ad was already watched in this run
+	if (m_watchedRewardedAd)
+	{
+		ReturnToMenu();
+		return;
+	}
+
+	CrazySDK::RequestAd(CrazySDK::AdType::Midgame, [this](bool)
+	{
+		ReturnToMenu(); // also when no ad was available
+	});
+}
+
+void Game::ReturnToMenu()
+{
+	m_sound.StopPlayingSound("Racing");
+	m_sound.StopPlayingSound("Traffic");
+
+	m_shake.Stop();
+	m_noAdMessageTimer = 0.0f;
+
+	// The start screen is drawn whenever m_started is false.
+	// Choosing a difficulty there calls StartGame(), which resets the whole run.
+	m_started = false;
+}
+
 void Game::ContinueRun()
 {
 	m_continueUsed = true;
 	m_isGameOver = false;
+	m_watchedRewardedAd = true;
 	m_worldSpeed = m_speedBeforeCrash;
 	m_invincibleTimer = CONTINUE_PROTECTION_TIME;
 
@@ -307,6 +458,10 @@ void Game::CheckNearMisses()
 		{
 			const int bonus = m_score.RegisterNearMiss();
 
+			// The pitch rises with the combo: x2 sounds normal, x5 sounds clearly higher.
+			const float pitch = 1.0f + 0.12f * (m_score.GetMultiplier() - 2);
+			m_sound.PlaySoundWithPitch("CloseCall", pitch);
+
 			m_popups.Add(TextFormat("CLOSE CALL +%i", bonus),
 				Vector2{ carRect.x + carRect.width / 2.0f, carRect.y - 20.0f },
 				YELLOW);
@@ -326,6 +481,7 @@ void Game::OnCrash()
 
 	m_score.ResetCombo();   // a crash breaks the combo
 	m_score.SaveBestScore(); // save once, when the run ends
+	m_coins.Save();
 
 	m_isCrashing = true;
 	m_crashTimer = GAME_OVER_DELAY;
@@ -345,6 +501,7 @@ void Game::DrawGame()
 	BeginMode2D(m_camera);
 
 	m_road.Draw();
+	m_coins.Draw();
 
 	for (const auto& npc_car : m_npc_cars)
 	{
@@ -363,10 +520,23 @@ void Game::DrawGame()
 	// The interface is drawn outside the camera, so it stays steady and readable.
 	m_popups.Draw(m_font);
 	m_score.Draw(m_font);
+	m_coins.DrawHud(m_font, GetScreenWidth() / 1.6f, 88.0f);
 
 	if (m_isGameOver)
 	{
-		m_gameOver.Draw(m_font, !m_continueUsed);
+		m_gameOver.Draw(m_font, !m_continueUsed, GetDoubleCoinsOffer());
+
+		// Coins earned in this run
+		const float centerX = m_road.GetPosition().x + m_road.GetWidth() / 2.0f;
+		const char* runText = TextFormat("Coins +%i", m_coins.GetRunCoins());
+		const char* totalText = TextFormat("Total %i", m_coins.GetTotalCoins());
+		const Vector2 runSize = MeasureTextEx(m_font, runText, 24, 3);
+		const Vector2 totalSize = MeasureTextEx(m_font, totalText, 24, 3);
+
+		DrawTextOutlined(m_font, runText,
+			Vector2{ centerX - runSize.x / 2.0f, 248.0f }, 24, 3, GOLD, BLACK);
+		DrawTextOutlined(m_font, totalText,
+			Vector2{ centerX - totalSize.x / 2.0f, 276.0f }, 24, 3, WHITE, BLACK);
 
 		if (m_noAdMessageTimer > 0.0f)
 		{
@@ -374,7 +544,7 @@ void Game::DrawGame()
 			const Vector2 size = MeasureTextEx(m_font, message, 22, 3);
 			const float roadX = m_road.GetPosition().x;
 			DrawTextEx(m_font, message,
-				Vector2{ roadX + (m_road.GetWidth() - size.x) / 2.0f, 470.0f }, 22, 3, WHITE);
+				Vector2{ roadX + (m_road.GetWidth() - size.x) / 2.0f, 600.0f }, 22, 3, WHITE); 
 		}
 	}
 
@@ -388,16 +558,19 @@ void Game::ResetGame()
 	m_crashTimer = 0.0f;
 	m_shake.Stop();
 
-	m_worldSpeed = START_WORLD_SPEED;
+	m_worldSpeed = m_startSpeed;
 	m_worldSpeedTimer = 0.0f;
 
 	m_continueUsed = false;
+	m_watchedRewardedAd = false;
 	m_invincibleTimer = 0.0f;
 	m_noAdMessageTimer = 0.0f;
 
 	m_car_controller.StopExplosionVFX();
 	m_score.ResetCurrentScore(); // also resets the combo
 	m_popups.Clear();
+	m_coins.ResetRun();
+
 	m_selectedBackgroundColor = GetRandomBackgroundColor();
 
 	PlaceNpcCars();
@@ -456,4 +629,17 @@ void Game::PlaceSceneries()
 	// Left side of the road
 	m_sceneries[2].SetPosition(Vector2{ roadX - 15.0f, -200.0f });
 	m_sceneries[3].SetPosition(Vector2{ roadX - 15.0f, -500.0f });
+}
+
+void Game::DrawButton(const Font& font, const Rectangle& bounds, const char* text,
+	Color fillColor, Color textColor) const
+{
+	DrawRectangleRounded(bounds, 0.7f, 8, fillColor);
+
+	const float fontSize = 22.0f;
+	const float spacing = 3.0f;
+	const Vector2 size = MeasureTextEx(font, text, fontSize, spacing);
+	DrawTextEx(font, text,
+		Vector2{ bounds.x + (bounds.width - size.x) / 2.0f, bounds.y + (bounds.height - size.y) / 2.0f },
+		fontSize, spacing, textColor);
 }
