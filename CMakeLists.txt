@@ -50,7 +50,14 @@ add_executable(${PROJECT_NAME}
         include/ScreenShake.h 
         include/Difficulty.h 
         include/CoinManager.h
-        src/CoinManager.cpp "include/Steering.h")
+        src/CoinManager.cpp 
+        include/Steering.h
+        include/CarShop.h
+        src/CarShop.cpp  
+        include/PowerUpManager.h 
+        src/PowerUpManager.cpp 
+        include/UpgradeShop.h 
+        src/UpgradeShop.cpp)
 
 target_link_libraries(${PROJECT_NAME} raylib)
 

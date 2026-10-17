@@ -14,7 +14,7 @@ public:
     // Switches to the best score of that difficulty. Call it before each run starts.
     void SetDifficulty(Difficulty difficulty);
 
-    void Update();
+    void Update(float rateScale = 1.0f); // rateScale < 1 = the passive score grows slower (slow motion)
     void Draw(const Font& font) const;
     void ResetCurrentScore();
 

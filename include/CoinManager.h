@@ -33,6 +33,12 @@ public:
 	int GetDoubleableCoins() const; // coins of this run that have not been doubled yet
 	void DoubleRunCoins();          // adds a bonus equal to GetDoubleableCoins() and saves
 
+	bool TrySpend(int amount); // spends from the total (shop). Returns false if there is not enough.
+	static void DrawIcon(int x, int y, float radius); // small coin icon for menus
+
+	// Magnet: pulls the coins within `radius` toward `target`.
+	void PullToward(Vector2 target, float radius, float dt);
+
 	void Save(); // saves the total, only if it changed
 
 private:
@@ -54,6 +60,7 @@ private:
 	static constexpr float MIN_COIN_SPACING = 40.0f;
 	static constexpr float PLAYER_STEER_SPEED = 3.0f;    // must match CarController::m_speed
 	static constexpr float STEER_EFFORT = 0.5f;          // patterns ask for at most 50% of the steering speed
+	static constexpr float MAGNET_PULL_SPEED = 14.0f; // pixels per 60 FPS frame
 
 	struct Coin
 	{

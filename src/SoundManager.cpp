@@ -58,3 +58,9 @@ void SoundManager::ShutdownAllSounds()
     if (IsAudioDeviceReady())
         CloseAudioDevice();
 }
+void SoundManager::SetPitch(const std::string& key, float pitch)
+{
+    const auto it = m_sounds.find(key);
+    if (it != m_sounds.end())
+        SetSoundPitch(it->second, pitch);
+}

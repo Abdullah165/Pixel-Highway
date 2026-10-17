@@ -75,6 +75,15 @@ void Game::Init()
 	m_easyButtonBounds = Rectangle{ startX, buttonY, buttonWidth, buttonHeight };
 	m_mediumButtonBounds = Rectangle{ startX + (buttonWidth + gap), buttonY, buttonWidth, buttonHeight };
 	m_hardButtonBounds = Rectangle{ startX + (buttonWidth + gap) * 2.0f, buttonY, buttonWidth, buttonHeight };
+
+	m_garageButtonBounds = Rectangle{ (SCREEN_WIDTH - 200.0f) / 2.0f, 570.0f, 200.0f, 50.0f };
+
+	// Garage tabs (top left, away from the title)
+	m_tabCarsBounds = Rectangle{ 60.0f, 40.0f, 150.0f, 44.0f };
+	m_tabUpgradesBounds = Rectangle{ 224.0f, 40.0f, 170.0f, 44.0f };
+
+	// Use the color equipped in the garage
+	m_car_controller.SetTint(m_shop.GetSelectedTint());
 }
 
 void Game::Cleanup()
@@ -114,7 +123,10 @@ void Game::UpdateDrawFrame()
 	// so we wait for the first click / key press before starting.
 	if (!m_started)
 	{
-		DrawStartScreen();
+		if (m_inGarage)
+			DrawGarageScreen();
+		else
+			DrawStartScreen();
 		return;
 	}
 
@@ -140,8 +152,9 @@ void Game::DrawStartScreen()
 	const bool hoverEasy = CheckCollisionPointRec(mouse, m_easyButtonBounds);
 	const bool hoverMedium = CheckCollisionPointRec(mouse, m_mediumButtonBounds);
 	const bool hoverHard = CheckCollisionPointRec(mouse, m_hardButtonBounds);
+	const bool hoverGarage = CheckCollisionPointRec(mouse, m_garageButtonBounds);
 
-	// Only a click on one of the three buttons starts the game.
+	// Only a click on one of the buttons does something.
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
 		if (hoverEasy)
@@ -150,6 +163,12 @@ void Game::DrawStartScreen()
 			StartGame(Difficulty::Medium);
 		else if (hoverHard)
 			StartGame(Difficulty::Hard);
+		else if (hoverGarage)
+		{
+			m_sound.InitResources(); // the click unlocks audio, so the garage can play sounds
+			m_sound.StartPlayingSound("ButtonClick");
+			m_inGarage = true;
+		}
 	}
 
 	BeginDrawing();
@@ -168,20 +187,117 @@ void Game::DrawStartScreen()
 		hoverMedium ? ORANGE : YELLOW, hoverMedium ? BLACK : RED);
 	DrawButton(m_font, m_hardButtonBounds, "Hard",
 		hoverHard ? ORANGE : YELLOW, hoverHard ? BLACK : RED);
+	DrawButton(m_font, m_garageButtonBounds, "Garage",
+		hoverGarage ? ORANGE : YELLOW, hoverGarage ? BLACK : RED);
 
 	// Best score of each difficulty, centered under its button
 	const auto drawBest = [this](const Rectangle& bounds, Difficulty difficulty)
 	{
 		const char* label = TextFormat("Best: %i", m_score.GetBestScore(difficulty));
-		const Vector2 size = MeasureTextEx(m_font, label, 20, 3);
+		const Vector2 labelSize = MeasureTextEx(m_font, label, 20, 3);
 		DrawTextEx(m_font, label,
-			Vector2{ bounds.x + (bounds.width - size.x) / 2.0f, bounds.y + bounds.height + 10.0f },
+			Vector2{ bounds.x + (bounds.width - labelSize.x) / 2.0f, bounds.y + bounds.height + 10.0f },
 			20, 3, LIGHTGRAY);
 	};
 
 	drawBest(m_easyButtonBounds, Difficulty::Easy);
 	drawBest(m_mediumButtonBounds, Difficulty::Medium);
 	drawBest(m_hardButtonBounds, Difficulty::Hard);
+
+	// Total coins, top right
+	const char* coinsText = TextFormat("%i", m_coins.GetTotalCoins());
+	const Vector2 coinsSize = MeasureTextEx(m_font, coinsText, 28, 4);
+	const float coinsRight = SCREEN_WIDTH - 40.0f;
+	DrawTextOutlined(m_font, coinsText, Vector2{ coinsRight - coinsSize.x, 30.0f }, 28, 4, GOLD, BLACK);
+	CoinManager::DrawIcon(static_cast<int>(coinsRight - coinsSize.x - 26.0f), 46, 13.0f);
+
+	EndDrawing();
+}
+
+void Game::DrawGarageScreen()
+{
+	const Vector2 mouse = GetMousePosition();
+	const bool hoverCarsTab = CheckCollisionPointRec(mouse, m_tabCarsBounds);
+	const bool hoverUpgradesTab = CheckCollisionPointRec(mouse, m_tabUpgradesBounds);
+
+	// Tabs
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+	{
+		if (hoverCarsTab && m_garageTab != GarageTab::Cars)
+		{
+			m_garageTab = GarageTab::Cars;
+			m_sound.StartPlayingSound("ButtonClick");
+		}
+		else if (hoverUpgradesTab && m_garageTab != GarageTab::Upgrades)
+		{
+			m_garageTab = GarageTab::Upgrades;
+			m_sound.StartPlayingSound("ButtonClick");
+		}
+	}
+
+	if (m_garageTab == GarageTab::Cars)
+	{
+		switch (m_shop.Update(m_coins))
+		{
+		case CarShop::Event::Back:
+			m_sound.StartPlayingSound("ButtonClick");
+			m_inGarage = false;
+			break;
+		case CarShop::Event::Equipped:
+			m_sound.StartPlayingSound("ButtonClick");
+			m_car_controller.SetTint(m_shop.GetSelectedTint());
+			break;
+		case CarShop::Event::Purchased:
+			m_sound.PlaySoundWithPitch("Coin", 1.9f);
+			m_car_controller.SetTint(m_shop.GetSelectedTint());
+			break;
+		case CarShop::Event::NotEnoughCoins:
+			m_sound.PlaySoundWithPitch("CloseCall", 0.6f); // a low "nope" sound
+			break;
+		case CarShop::Event::None:
+			break;
+		}
+	}
+	else
+	{
+		switch (m_upgrades.Update(m_coins))
+		{
+		case UpgradeShop::Event::Back:
+			m_sound.StartPlayingSound("ButtonClick");
+			m_inGarage = false;
+			break;
+		case UpgradeShop::Event::Purchased:
+			m_sound.PlaySoundWithPitch("Coin", 1.9f);
+			break;
+		case UpgradeShop::Event::NotEnoughCoins:
+			m_sound.PlaySoundWithPitch("CloseCall", 0.6f);
+			break;
+		case UpgradeShop::Event::None:
+			break;
+		}
+	}
+
+	BeginDrawing();
+	ClearBackground(Color{ 20, 20, 28, 255 });
+
+	if (m_garageTab == GarageTab::Cars)
+		m_shop.Draw(m_font, m_car_controller.GetPreviewTexture(), m_coins.GetTotalCoins());
+	else
+		m_upgrades.Draw(m_font, m_coins.GetTotalCoins());
+
+	// Tab buttons: the open tab is orange, the others are dark (yellow when hovered)
+	const auto drawTab = [this](const Rectangle& bounds, const char* label, bool active, bool hover)
+	{
+		if (active)
+			DrawButton(m_font, bounds, label, ORANGE, BLACK);
+		else if (hover)
+			DrawButton(m_font, bounds, label, YELLOW, RED);
+		else
+			DrawButton(m_font, bounds, label, Color{ 60, 60, 75, 255 }, LIGHTGRAY);
+	};
+
+	drawTab(m_tabCarsBounds, "Cars", m_garageTab == GarageTab::Cars, hoverCarsTab);
+	drawTab(m_tabUpgradesBounds, "Upgrades", m_garageTab == GarageTab::Upgrades, hoverUpgradesTab);
 
 	EndDrawing();
 }
@@ -223,22 +339,6 @@ void Game::UpdateGame(float dt)
 		return;
 	}
 
-	// Coins: move, hide the ones under traffic, collect the ones touching the car.
-	m_coins.Update(m_worldSpeed * dt, frameTime,
-		m_road.GetPosition().x, static_cast<float>(m_road.GetWidth()), m_worldSpeed);
-
-	for (const auto& npc_car : m_npc_cars)
-		m_coins.RemoveOverlapping(npc_car.getRect());
-
-	const std::vector<Vector2> collected = m_coins.CollectTouching(m_car_controller.getRect());
-	if (!collected.empty())
-	{
-		m_sound.PlaySoundWithPitch("Coin", m_coins.GetPickupPitch());
-
-		for (const Vector2& position : collected)
-			m_popups.Add("+1", Vector2{ position.x, position.y - 24.0f }, GOLD);
-	}
-
 	if (!m_isGameOver)
 	{
 		// Sounds
@@ -249,6 +349,10 @@ void Game::UpdateGame(float dt)
 			m_sound.StartPlayingSound("Traffic");
 
 		m_car_controller.Update(m_road.GetPosition(), m_road.GetWidth(), dt, m_worldSpeed);
+
+		// Slow motion slows everything that moves with the world. The car's steering does not change.
+		const float timeScale = m_powerUps.GetTimeScale();
+		const float worldMove = m_worldSpeed * timeScale * dt;
 
 		if (m_invincibleTimer > 0.0f)
 			m_invincibleTimer -= frameTime;
@@ -264,13 +368,20 @@ void Game::UpdateGame(float dt)
 
 		for (auto& npc_car : m_npc_cars)
 		{
-			npc_car.Update(m_road.GetPosition(), m_road.GetWidth(), m_worldSpeed * dt);
+			npc_car.Update(m_road.GetPosition(), m_road.GetWidth(), worldMove);
 
 			if (m_invincibleTimer <= 0.0f &&
 				CheckCollisionRecs(m_car_controller.getRect(), npc_car.getRect()))
 			{
-				OnCrash();
-				break;
+				if (m_powerUps.ConsumeShield())
+				{
+					OnShieldBroken(); // the shield took the hit: no crash
+				}
+				else
+				{
+					OnCrash();
+					break;
+				}
 			}
 		}
 
@@ -278,13 +389,14 @@ void Game::UpdateGame(float dt)
 			return; // the crash sequence starts now
 
 		CheckNearMisses();
+		UpdateCollectibles(dt, frameTime);
 
 		for (auto& scenery : m_sceneries)
 		{
-			scenery.Update(m_worldSpeed * dt);
+			scenery.Update(worldMove);
 		}
 
-		m_score.Update();
+		m_score.Update(timeScale); // the passive score grows slower during slow motion
 	}
 	else
 	{
@@ -490,6 +602,84 @@ void Game::OnCrash()
 	CrazySDK::GameplayStop();
 }
 
+void Game::UpdateCollectibles(float dt, float frameTime)
+{
+	const float roadX = m_road.GetPosition().x;
+	const float roadWidth = static_cast<float>(m_road.GetWidth());
+	const Rectangle carRect = m_car_controller.getRect();
+	const Vector2 carCenter{ carRect.x + carRect.width / 2.0f, carRect.y + carRect.height / 2.0f };
+
+	// How far the world moves this frame (smaller during slow motion)
+	const float worldMove = m_worldSpeed * m_powerUps.GetTimeScale() * dt;
+
+	// Traffic rectangles: used to keep pickups and coins from sitting under a car.
+	std::vector<Rectangle> traffic;
+	traffic.reserve(m_npc_cars.size());
+	for (const auto& npc_car : m_npc_cars)
+		traffic.push_back(npc_car.getRect());
+
+	// Power-ups
+	m_powerUps.Update(worldMove, frameTime, roadX, roadWidth, traffic);
+
+	for (const PowerUpManager::Type type : m_powerUps.CollectTouching(carRect))
+	{
+		m_popups.Add(PowerUpManager::GetName(type),
+			Vector2{ carCenter.x, carRect.y - 30.0f }, PowerUpManager::GetColor(type));
+
+		// Same sound file as the coins and close calls, at a pitch of its own
+		float pitch = 1.7f; // shield
+		if (type == PowerUpManager::Type::Magnet) pitch = 2.0f;
+		else if (type == PowerUpManager::Type::SlowMotion) pitch = 0.9f; // lower and calmer
+		m_sound.PlaySoundWithPitch("CloseCall", pitch);
+	}
+
+	SyncSlowMotionAudio();
+
+	// Coins (the last argument is the normal world speed: it decides how far apart the coins are placed)
+	m_coins.Update(worldMove, frameTime, roadX, roadWidth, m_worldSpeed);
+
+	if (m_powerUps.IsMagnetActive())
+		m_coins.PullToward(carCenter, m_powerUps.GetMagnetRadius(), dt);
+
+	for (const Rectangle& rect : traffic)
+		m_coins.RemoveOverlapping(rect);
+
+	const std::vector<Vector2> collected = m_coins.CollectTouching(carRect);
+	if (!collected.empty())
+	{
+		m_sound.PlaySoundWithPitch("Coin", m_coins.GetPickupPitch());
+
+		for (const Vector2& position : collected)
+			m_popups.Add("+1", Vector2{ position.x, position.y - 24.0f }, GOLD);
+	}
+}
+
+void Game::OnShieldBroken()
+{
+	m_invincibleTimer = SHIELD_BREAK_PROTECTION;
+	m_shake.Start(0.25f, 6.0f); // a small shake: much weaker than a real crash
+
+	// A low, dull version of the close-call sound
+	m_sound.PlaySoundWithPitch("CloseCall", 0.5f);
+
+	const Rectangle carRect = m_car_controller.getRect();
+	m_popups.Add(m_powerUps.HasShield() ? "SHIELD HIT!" : "SHIELD BROKEN",
+		Vector2{ carRect.x + carRect.width / 2.0f, carRect.y - 30.0f },
+		PowerUpManager::GetColor(PowerUpManager::Type::Shield));
+}
+
+void Game::SyncSlowMotionAudio()
+{
+	const bool slow = m_powerUps.IsSlowMotionActive();
+	if (slow == m_slowAudioOn) return; // only change the pitch when the state changes
+
+	m_slowAudioOn = slow;
+
+	const float pitch = slow ? 0.75f : 1.0f; // lower pitch = slower, deeper sound
+	m_sound.SetPitch("Racing", pitch);
+	m_sound.SetPitch("Traffic", pitch);
+}
+
 void Game::DrawGame()
 {
 	m_camera.offset = m_shake.GetOffset();
@@ -502,6 +692,7 @@ void Game::DrawGame()
 
 	m_road.Draw();
 	m_coins.Draw();
+	m_powerUps.DrawPickups(m_font);
 
 	for (const auto& npc_car : m_npc_cars)
 	{
@@ -510,6 +701,9 @@ void Game::DrawGame()
 
 	m_car_controller.Draw(m_isGameOver, m_isCrashing);
 
+	if (!m_isGameOver && !m_isCrashing)
+		m_powerUps.DrawCarEffects(m_car_controller.getRect(), m_invincibleTimer > 0.0f);
+
 	for (const auto& scenery : m_sceneries)
 	{
 		scenery.Draw();
@@ -517,10 +711,17 @@ void Game::DrawGame()
 
 	EndMode2D();
 
+	// Slow motion tint (outside the camera, so it does not shake)
+	if (!m_isGameOver)
+		m_powerUps.DrawScreenEffects();
+
 	// The interface is drawn outside the camera, so it stays steady and readable.
 	m_popups.Draw(m_font);
 	m_score.Draw(m_font);
 	m_coins.DrawHud(m_font, GetScreenWidth() / 1.6f, 88.0f);
+
+	if (!m_isGameOver)
+		m_powerUps.DrawHud(m_font, GetScreenWidth() / 1.6f, 130.0f);
 
 	if (m_isGameOver)
 	{
@@ -575,6 +776,11 @@ void Game::ResetGame()
 
 	PlaceNpcCars();
 	PlaceSceneries();
+
+	m_powerUps.SetUpgrades(m_upgrades.GetMagnetDuration(), m_upgrades.GetMagnetRadius(),
+		m_upgrades.GetSlowDuration(), m_upgrades.GetSpawnTimeScale(), m_upgrades.GetShieldCharges());
+	m_powerUps.ResetRun();
+	SyncSlowMotionAudio(); // restores the normal sound pitch if a run ended during slow motion
 
 	CrazySDK::GameplayStart();
 }

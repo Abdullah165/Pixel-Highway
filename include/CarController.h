@@ -19,6 +19,9 @@ public:
 	void PlayCarExplosionVFX();
 	void StopExplosionVFX();
 
+	void SetTint(Color tint);
+	const Texture2D& GetPreviewTexture() const; // the straight-driving sprite, for the garage
+
 private:
 	std::array<Texture2D, 3> m_texture{};
 	std::array<Texture2D, 33> m_explosionTextures{};
@@ -30,6 +33,8 @@ private:
 
 	bool m_wasLeftKeyDown = false;
 	bool m_wasRightKeyDown = false;
+
+	Color m_tint = WHITE; // the equipped color from the garage
 };
 
 

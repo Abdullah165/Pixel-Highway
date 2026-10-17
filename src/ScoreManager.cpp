@@ -14,7 +14,7 @@ EM_JS(int, JS_LoadBest, (int index), {
     try {
         var names = ["easy", "medium", "hard"];
         var value = localStorage.getItem("ph_best_" + names[index]);
-        if (value == = null && index == = 0) value = localStorage.getItem("ph_best");
+        if (value == null && index == 0) value = localStorage.getItem("ph_best");
         return parseInt(value || "0") || 0;
     }
  catch (e) { return 0; }
@@ -57,7 +57,7 @@ void ScoreManager::ResetCurrentScore()
     ResetCombo();
 }
 
-void ScoreManager::Update()
+void ScoreManager::Update(float rateScale)
 {
     const float frameTime = GetFrameTime();
 
@@ -69,7 +69,7 @@ void ScoreManager::Update()
             ResetCombo();
     }
 
-    m_currentScore += frameTime * 10.0f * GetMultiplier();
+    m_currentScore += frameTime * 10.0f * GetMultiplier() * rateScale;
 
     UpdateBest();
 }

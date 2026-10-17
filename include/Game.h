@@ -16,6 +16,9 @@
 #include "ScreenShake.h"
 #include "Difficulty.h"
 #include "CoinManager.h"
+#include "CarShop.h"
+#include "PowerUpManager.h"
+#include "UpgradeShop.h"
 
 class Game
 {
@@ -60,6 +63,7 @@ private:
     void UpdateGame(float dt);
     void DrawGame();
     void DrawStartScreen();
+    void DrawGarageScreen();
 
     // Game over buttons
     void OnContinuePressed(); // rewarded ad -> keep playing
@@ -70,12 +74,17 @@ private:
 
     Color GetRandomBackgroundColor() const;
 
+    void UpdateCollectibles(float dt, float frameTime); // coins and power-ups
+    void OnShieldBroken();
+
 private:
     void DrawButton(const Font& font, const Rectangle& bounds, const char* text,
         Color fillColor, Color textColor) const;
 
     void OnDoubleCoinsPressed(); // rewarded ad -> bonus coins
     int GetDoubleCoinsOffer() const; // 0 = do not show the button
+
+    void SyncSlowMotionAudio(); // slows the music and traffic sounds while slow motion is active
 
     static constexpr int SCREEN_WIDTH = 1280;
     static constexpr int SCREEN_HEIGHT = 720;
@@ -92,6 +101,7 @@ private:
     static constexpr float CRASH_SHAKE_STRENGTH = 12.0f; // pixels at the start
     static constexpr float GAME_OVER_DELAY = 1.0f;       // seconds from crash to Game Over screen
     static constexpr int MIN_COINS_TO_OFFER_DOUBLE = 5; // smaller bonuses are not worth an ad
+    static constexpr float SHIELD_BREAK_PROTECTION = 1.5f; // seconds without crashing after a shield breaks
 
     CarController m_car_controller;
     Road m_road;
@@ -107,6 +117,9 @@ private:
     GameOver m_gameOver;
     PopupManager m_popups;
     CoinManager m_coins;
+    PowerUpManager m_powerUps;
+
+    bool m_slowAudioOn = false;
 
     ScreenShake m_shake;
     Camera2D m_camera{ Vector2{0.0f, 0.0f}, Vector2{0.0f, 0.0f}, 0.0f, 1.0f };
@@ -137,6 +150,17 @@ private:
     Rectangle m_hardButtonBounds{};
     Difficulty m_difficulty = Difficulty::Medium;
     float m_startSpeed = 5.0f; // world speed at the start of every run
+
+    CarShop m_shop;
+    bool m_inGarage = false;
+    Rectangle m_garageButtonBounds{};
+
+    enum class GarageTab { Cars, Upgrades };
+
+    UpgradeShop m_upgrades;
+    GarageTab m_garageTab = GarageTab::Cars;
+    Rectangle m_tabCarsBounds{};
+    Rectangle m_tabUpgradesBounds{};
 };
 
 #endif // GAME_H

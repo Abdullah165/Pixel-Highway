@@ -15,7 +15,7 @@ public:
     void PlaySoundWithPitch(const std::string& key, float pitch);
     bool IsSoundStillPlaying(const std::string& key) const;
     void ShutdownAllSounds();
-
+    void SetPitch(const std::string& key, float pitch); // changes a sound's pitch, also while it plays
 private:
     std::unordered_map<std::string, Sound> m_sounds;
 };

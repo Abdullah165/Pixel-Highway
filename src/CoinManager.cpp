@@ -136,6 +136,23 @@ void CoinManager::RemoveOverlapping(const Rectangle& rect)
     });
 }
 
+void CoinManager::PullToward(Vector2 target, float radius, float dt)
+{
+    for (auto& coin : m_coins)
+    {
+        const float dx = target.x - coin.position.x;
+        const float dy = target.y - coin.position.y;
+        const float distance = std::sqrt(dx * dx + dy * dy);
+
+        if (distance > radius || distance < 1.0f) continue;
+
+        // Move straight toward the target, never past it.
+        const float step = std::min(MAGNET_PULL_SPEED * dt, distance);
+        coin.position.x += dx / distance * step;
+        coin.position.y += dy / distance * step;
+    }
+}
+
 std::vector<Vector2> CoinManager::CollectTouching(const Rectangle& carRect)
 {
     std::vector<Vector2> collected;
@@ -217,6 +234,24 @@ int CoinManager::GetTotalCoins() const
     return m_totalCoins;
 }
 
+bool CoinManager::TrySpend(int amount)
+{
+    if (amount < 0 || m_totalCoins < amount) return false;
+
+    m_totalCoins -= amount;
+    m_totalChanged = true;
+    Save(); // saved right away: a purchase must survive closing the tab
+
+    return true;
+}
+
+void CoinManager::DrawIcon(int x, int y, float radius)
+{
+    DrawCircle(x, y, radius + 2.0f, BLACK);
+    DrawCircle(x, y, radius, GOLD);
+    DrawCircle(x, y, radius * 0.6f, YELLOW);
+}
+
 void CoinManager::Save()
 {
     if (!m_totalChanged) return;
@@ -229,6 +264,7 @@ int CoinManager::GetDoubleableCoins() const
 {
     return m_runCoins - m_doubledBase;
 }
+
 
 void CoinManager::DoubleRunCoins()
 {

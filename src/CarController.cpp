@@ -46,17 +46,17 @@ void CarController::Draw(bool isGameOver, bool isCrashing)
 {
 	if (m_wasLeftKeyDown && (isGameOver || isCrashing)) 
 	{
-		DrawTexture(m_texture[0], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
+		DrawTexture(m_texture[0], static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_tint);
 		if (!m_isExploding) return;
 	}
 	else if(m_wasRightKeyDown && (isGameOver || isCrashing))
 	{
-		DrawTexture(m_texture[2], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
+		DrawTexture(m_texture[2], static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_tint);
 		if(!m_isExploding) return;
 	}
 	else if(isGameOver || isCrashing)
 	{
-		DrawTexture(m_texture[1], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
+		DrawTexture(m_texture[1], static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_tint);
 		if (!m_isExploding) return;
 	}
 
@@ -84,17 +84,17 @@ void CarController::Draw(bool isGameOver, bool isCrashing)
 	{
 		if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT))
 		{
-			DrawTexture(m_texture[2], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
+			DrawTexture(m_texture[2], static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_tint);
 			m_wasRightKeyDown = true;
 		}
 		else if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))
 		{
-			DrawTexture(m_texture[0], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
+			DrawTexture(m_texture[0], static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_tint);
 			m_wasLeftKeyDown = true;
 		}
 		else
 		{
-			DrawTexture(m_texture[1], static_cast<int>(m_position.x), static_cast<int>(m_position.y), WHITE);
+			DrawTexture(m_texture[1], static_cast<int>(m_position.x), static_cast<int>(m_position.y), m_tint);
 			m_wasLeftKeyDown = false;
 			m_wasRightKeyDown = false;
 		}
@@ -137,4 +137,14 @@ void CarController::PlayCarExplosionVFX()
 void CarController::StopExplosionVFX()
 {
 	m_isExploding = false;
+}
+
+void CarController::SetTint(Color tint)
+{
+	m_tint = tint;
+}
+
+const Texture2D& CarController::GetPreviewTexture() const
+{
+	return m_texture[1];
 }
